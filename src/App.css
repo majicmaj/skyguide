@@ -1,38 +1,58 @@
-.App {
-  text-align: center;
-}
+/* Global */
+:root {
+  --primary-color: #72f;
+  --progress-height: 15px;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  margin: 0;
+  box-sizing: border-box;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+input {
+  background: black;
   color: white;
+  font-size: inherit;
+  font-family: inherit;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+.App {
+  height: 100vh;
+  min-height: 500px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.Nav input {
+  text-align: center;
+  border: none;
 }
 
-.App-link {
-  color: #61dafb;
+.Card {
+background: #101112;
+padding: 20px;
+border-radius: 10px;
+height: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.progress {
+  height: var(--progress-height);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.progress .bar {
+  height: var(--progress-height);
+  background: var(--primary-color);
+  border-radius: 15px;
 }

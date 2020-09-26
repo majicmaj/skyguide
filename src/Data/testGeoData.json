@@ -1,0 +1,16 @@
+{
+    "status": "success",
+    "country": "United States",
+    "countryCode": "US",
+    "region": "VA",
+    "regionName": "Virginia",
+    "city": "Herndon",
+    "zip": "20171",
+    "lat": 38.9258,
+    "lon": -77.3939,
+    "timezone": "America/New_York",
+    "isp": "MCI Communications Services, Inc. d/b/a Verizon Business",
+    "org": "Verizon Communications",
+    "as": "AS701 MCI Communications Services, Inc. d/b/a Verizon Business",
+    "query": "100.36.34.82"
+}
