@@ -29,12 +29,12 @@ const Day = (props) => {
                     <Col span={12} className="centered">
                         <p className="nomargin"></p>
                         <h2 className="nomargin">--°</h2>
-                        <img className="small" src={sunset}/>
+                        <img className="small" alt="night"src={sunset}/>
                     </Col>
                     <Col span={12} className="centered">
                         <p className="nomargin"></p>
                         <h2 className="nomargin">--°</h2>
-                        <img className="small" src={sunrise}/>
+                        <img className="small" alt="morning"src={sunrise}/>
                     </Col>
             </Row>
         </div>

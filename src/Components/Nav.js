@@ -10,7 +10,7 @@ const Nav = (props) => {
     }, [props.geo])
     return<nav className="Nav">
     <Button type="text">=</Button>
-    <Text>{title}</Text>
+    <Text>{title?title:"loading..."}</Text>
     <Button type="text">o</Button>
 </nav>
 }

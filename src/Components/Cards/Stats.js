@@ -30,7 +30,7 @@ const Stats = (props) => {
             </div>
         }
         else {
-            return <div className="Stats">
+            return <div className="Stats card">
                 <Progress
                 value={1}
                 max={1}

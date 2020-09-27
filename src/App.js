@@ -8,10 +8,14 @@ import Footer from './Container/Footer'
 
 import { API, ENV } from './Constants';
 
-import testAstroData from './Data/testAstroData.json'
-import testGeoData from './Data/testGeoData.json'
-import testForecastData from './Data/testForecastData.json'
-import testForecastHourlyData from './Data/testForecastHourlyData.json'
+// import testAstroData from './Data/testAstroData.json'
+// import testGeoData from './Data/testGeoData.json'
+// import testForecastData from './Data/testForecastData.json'
+// import testForecastHourlyData from './Data/testForecastHourlyData.json'
+const testAstroData = {}
+const testGeoData = {}
+const testForecastData = {}
+const testForecastHourlyData = {}
 
 const App = () => {
 

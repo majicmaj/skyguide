@@ -13,7 +13,7 @@ const Now = (props) => {
     <p className="description">{hourly.shortForecast}</p>
                     </Col>
                     <Col span={12} className="centered">
-                        <img className="medium" src={getIcon(hourly.shortForecast)}/>
+                        <img className="medium" alt={hourly.shortForecast} src={getIcon(hourly.shortForecast)}/>
                     </Col>
             </Row></div>
     }
@@ -25,7 +25,7 @@ const Now = (props) => {
                 <p>Loading...</p>
             </Col>
                     <Col span={12} className="centered">
-                        <img className="medium" src={cloudy}/>
+                        <img className="medium" alt="cloudy" src={cloudy}/>
                     </Col>
         </Row></div>
     }
