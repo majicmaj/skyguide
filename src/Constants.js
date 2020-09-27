@@ -9,5 +9,5 @@ export const API = {
 
 export const ENV = {
     PROD: 'production',
-    DEV: 'devepoment'
+    DEV: 'development'
 }

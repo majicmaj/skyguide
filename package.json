@@ -25,7 +25,7 @@
     "start:server": "netlify-lambda serve ./functions",
     "build": "netlify-lambda serve .",
     "build:app": "craco build",
-    "build:server": "netlify-labda build .",
+    "build:server": "netlify-lambda build ./functions",
     "test": "craco test",
     "eject": "react-scripts eject"
   },

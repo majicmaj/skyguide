@@ -10,14 +10,14 @@ import { API, ENV } from './Constants';
 
 import { parse, stringify } from 'flatted/cjs'
 
-// import testAstroData from './Data/testAstroData.json'
-// import testGeoData from './Data/testGeoData.json'
-// import testForecastData from './Data/testForecastData.json'
-// import testForecastHourlyData from './Data/testForecastHourlyData.json'
-const testAstroData = {}
-const testGeoData = {}
-const testForecastData = {}
-const testForecastHourlyData = {}
+import testAstroData from './Data/testAstroData.json'
+import testGeoData from './Data/testGeoData.json'
+import testForecastData from './Data/testForecastData.json'
+import testForecastHourlyData from './Data/testForecastHourlyData.json'
+// const testAstroData = {}
+// const testGeoData = {}
+// const testForecastData = {}
+// const testForecastHourlyData = {}
 
 const App = () => {
   const [astroData, setAstroData] = useState({})
@@ -30,8 +30,8 @@ const App = () => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get("/.netlify/functions/lambda"):
       {data:testGeoData}
-      
-      setGeoData(parse(response.data))
+      console.log(response.data)
+      setGeoData(response.data)
     }
     fetchGeo();
   }, [])
