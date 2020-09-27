@@ -18,15 +18,15 @@ const testForecastData = {}
 const testForecastHourlyData = {}
 
 const App = () => {
-
   const [astroData, setAstroData] = useState({})
   const [geoData, setGeoData] = useState({})
   const [weatherData, setWeatherData] = useState({})
   const [hourlyWeatherData, setHourlyWeatherData] = useState({})
 
   useEffect(()=> {
+    console.log(process)
     const fetchGeo = async() => {
-      const response = (process.env.NODE_ENV === ENV.PROD)?
+      const response = (process.env.NODE_ENV !== 'development')?
       await Axios.get(API.IPAPI):
       {data:testGeoData}
       
@@ -46,14 +46,14 @@ const App = () => {
       }
     }
     const fetchWeather = async () => {
-      const URLS = (process.env.NODE_ENV === ENV.PROD)?
+      const URLS = (process.env.NODE_ENV !== 'development')?
       await fetchURLS():
       {}
-      const hourlyResponse = (process.env.NODE_ENV === ENV.PROD)?
-      await Axios.get((await URLS).forecastHourly):
+      const hourlyResponse = (process.env.NODE_ENV !== 'development')?
+      await Axios.get((URLS).forecastHourly):
       {data: testForecastHourlyData}
-      const weatherResponse = (process.env.NODE_ENV === ENV.PROD)?
-      await Axios.get((await URLS).forecast):
+      const weatherResponse = (process.env.NODE_ENV !== 'development')?
+      await Axios.get((URLS).forecast):
       {data: testForecastData}
 
       setHourlyWeatherData(hourlyResponse.data)
@@ -66,7 +66,7 @@ const App = () => {
 
   useEffect(()=> {
     const fetchAstro = async() => {
-      const response = (process.env.NODE_ENV === 'production')?
+      const response = (process.env.NODE_ENV !== 'development')?
       await Axios.get(`${API.ASTRO.HEAD}lat=${geoData.lat}&lon=-${geoData.lon}${API.ASTRO.TAIL}`):
       {data:testAstroData}
       setAstroData(response.data);
