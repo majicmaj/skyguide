@@ -10,14 +10,14 @@ import { API, ENV } from './Constants';
 
 import { parse, stringify } from 'flatted/cjs'
 
-import testAstroData from './Data/testAstroData.json'
-import testGeoData from './Data/testGeoData.json'
-import testForecastData from './Data/testForecastData.json'
-import testForecastHourlyData from './Data/testForecastHourlyData.json'
-// const testAstroData = {}
-// const testGeoData = {}
-// const testForecastData = {}
-// const testForecastHourlyData = {}
+// import testAstroData from './Data/testAstroData.json'
+// import testGeoData from './Data/testGeoData.json'
+// import testForecastData from './Data/testForecastData.json'
+// import testForecastHourlyData from './Data/testForecastHourlyData.json'
+const testAstroData = {}
+const testGeoData = {}
+const testForecastData = {}
+const testForecastHourlyData = {}
 
 const App = () => {
   const [astroData, setAstroData] = useState({})
@@ -27,16 +27,16 @@ const App = () => {
 
   useEffect(()=> {
     const fetchGeo = async() => {
-      const response = (process.env.NODE_ENV !== ENV.DEV)?
+      const response = (process.env.NODE_ENV === ENV.DEV)?
       await Axios.get("/.netlify/functions/lambda"):
       {data:testGeoData}
-      console.log(response.data)
       setGeoData(response.data)
     }
     fetchGeo();
   }, [])
 
   useEffect(()=> {
+    console.log("IM CALLED") 
     const fetchURLS = async () => {
       const response = await Axios.get(
         `${API.WEATHER}${geoData.latitude},${geoData.longitude}`
@@ -47,13 +47,13 @@ const App = () => {
       }
     }
     const fetchWeather = async () => {
-      const URLS = (process.env.NODE_ENV !== ENV.DEV)?
+      const URLS = (process.env.NODE_ENV === ENV.DEV)?
       await fetchURLS():
       {}
-      const hourlyResponse = (process.env.NODE_ENV !== ENV.DEV)?
+      const hourlyResponse = (process.env.NODE_ENV === ENV.DEV)?
       await Axios.get((URLS).forecastHourly):
       {data: testForecastHourlyData}
-      const weatherResponse = (process.env.NODE_ENV !== ENV.DEV)?
+      const weatherResponse = (process.env.NODE_ENV === ENV.DEV)?
       await Axios.get((URLS).forecast):
       {data: testForecastData}
 

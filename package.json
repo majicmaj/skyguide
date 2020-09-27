@@ -23,9 +23,9 @@
     "start": "npm-run-all --parallel start:app start:server",
     "start:app": "craco start",
     "start:server": "netlify-lambda serve ./functions",
-    "build": "netlify-lambda serve .",
+    "build": "npm-runall --paraellel build:**",
     "build:app": "craco build",
-    "build:server": "netlify-lambda build ./functions",
+    "build:functions": "netlify-lambda build ./functions",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
