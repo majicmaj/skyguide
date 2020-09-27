@@ -5,7 +5,6 @@ import cloudy from '../../CDN/cloudy.png'
 const Now = (props) => {
     if (props.hourly && props.hourly.properties) {
         const hourly = props.hourly.properties.periods[0]
-        getIcon(hourly.icon)
         return<div className="Now card">
             <Row justify="space-between">
                 <Col span={12}>

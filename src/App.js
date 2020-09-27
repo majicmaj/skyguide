@@ -27,7 +27,7 @@ const App = () => {
 
   useEffect(()=> {
     const fetchGeo = async() => {
-      const response = (process.env.NODE_ENV === ENV.DEV)?
+      const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get("/.netlify/functions/lambda"):
       {data:testGeoData}
       setGeoData(response.data)
@@ -47,13 +47,13 @@ const App = () => {
       }
     }
     const fetchWeather = async () => {
-      const URLS = (process.env.NODE_ENV === ENV.DEV)?
+      const URLS = (process.env.NODE_ENV !== ENV.DEV)?
       await fetchURLS():
       {}
-      const hourlyResponse = (process.env.NODE_ENV === ENV.DEV)?
+      const hourlyResponse = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get((URLS).forecastHourly):
       {data: testForecastHourlyData}
-      const weatherResponse = (process.env.NODE_ENV === ENV.DEV)?
+      const weatherResponse = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get((URLS).forecast):
       {data: testForecastData}
 
@@ -67,7 +67,7 @@ const App = () => {
 
   useEffect(()=> {
     const fetchAstro = async() => {
-      const response = (process.env.NODE_ENV !== 'development')?
+      const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${API.ASTRO.HEAD}lat=${geoData.lat}&lon=-${geoData.lon}${API.ASTRO.TAIL}`):
       {data:testAstroData}
       setAstroData(response.data);

@@ -1,12 +1,14 @@
 import {rainy, cloudy, moon, cloudyNight, sun, cloudyMorning, windSign, windy, snowy, hail, showers, thunder, tornado, sunrise} from './CDN';
 export const getIcon = (description, night) => {
 
+    if (description.toLowerCase().includes("rain")) return rainy
+    if (description.toLowerCase().includes("cloud")) return cloudy
+
     switch(description.toLowerCase()) {
         case "partly sunny":
             return cloudyMorning
         case "sunny":
             return sun
-
         case "Fair/clear":
             return night?moon:sun
         case "a few clouds":
@@ -45,6 +47,8 @@ export const getIcon = (description, night) => {
             return hail
         case "rain":
             return rainy
+        case "isolated rain showers":
+            return showers
         case "chance rain showers":
             return showers
         case "slight chance rain showers":
@@ -78,7 +82,9 @@ export const getIcon = (description, night) => {
         case "fog/mist":
             return cloudy 
         default:
-            return cloudy;
+            break
     }
 
+    if (description.toLowerCase().includes("rain")) return rainy
+    return cloudy
 }

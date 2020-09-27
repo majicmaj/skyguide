@@ -2,6 +2,7 @@ import React from 'react';
 
 import Progress from '../Shared/Progress'
 const Stats = (props) => {
+    console.log(props)
     const data = () => {
         if (props.astro.dataseries) {
             const astro = props.astro.dataseries
