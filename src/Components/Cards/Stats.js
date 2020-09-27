@@ -34,6 +34,7 @@ const Stats = (props) => {
                 <Progress
                 value={1}
                 max={1}
+                loading={true}
                 label='Loading Stats...'
                 />
             </div>
@@ -43,3 +44,6 @@ return <>{data()}</>
 }
 
 export default Stats;
+Progress.defaultProps = {
+    loading: false
+}

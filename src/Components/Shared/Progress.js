@@ -8,7 +8,7 @@ const Progress = (props) => {
         <Text>{props.label}</Text>
         <div className="progress">
             <div className="bar" style={{width: value + "%"}}>
-                <div className="fill"/>
+                <div className={`${props.loading?'loading':'fill'}`}/>
             </div>
         </div>
     </Tooltip>

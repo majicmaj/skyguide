@@ -6,7 +6,7 @@ import Nav from './Components/Nav'
 import Main from './Container/Main'
 import Footer from './Container/Footer'
 
-import { API } from './Constants';
+import { API, ENV } from './Constants';
 
 // import testAstroData from './Data/testAstroData.json'
 // import testGeoData from './Data/testGeoData.json'
@@ -26,8 +26,8 @@ const App = () => {
   useEffect(()=> {
     console.log(process)
     const fetchGeo = async() => {
-      const response = (process.env.NODE_ENV !== 'development')?
-      await Axios.get(API.IPAPI):
+      const response = (process.env.NODE_ENV !== ENV.DEV)?
+      await Axios.get(API.GEO):
       {data:testGeoData}
       
       setGeoData(response.data)
@@ -46,13 +46,13 @@ const App = () => {
       }
     }
     const fetchWeather = async () => {
-      const URLS = (process.env.NODE_ENV !== 'development')?
+      const URLS = (process.env.NODE_ENV !== ENV.DEV)?
       await fetchURLS():
       {}
-      const hourlyResponse = (process.env.NODE_ENV !== 'development')?
+      const hourlyResponse = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get((URLS).forecastHourly):
       {data: testForecastHourlyData}
-      const weatherResponse = (process.env.NODE_ENV !== 'development')?
+      const weatherResponse = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get((URLS).forecast):
       {data: testForecastData}
 
