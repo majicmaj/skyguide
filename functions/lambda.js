@@ -4,7 +4,6 @@ exports.handler = async(event) => {
     const { httpMethod } = event;
 
     if (httpMethod === 'GET') {
-        if (event.queyStringParamters && event)
         const response = await axios.get('http://www.ip-api.com/json/')
         const data = {
             status: response.data.status,
