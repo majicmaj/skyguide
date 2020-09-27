@@ -8,6 +8,8 @@ import Footer from './Container/Footer'
 
 import { API, ENV } from './Constants';
 
+import { parse, stringify } from 'flatted/cjs'
+
 // import testAstroData from './Data/testAstroData.json'
 // import testGeoData from './Data/testGeoData.json'
 // import testForecastData from './Data/testForecastData.json'
@@ -24,13 +26,12 @@ const App = () => {
   const [hourlyWeatherData, setHourlyWeatherData] = useState({})
 
   useEffect(()=> {
-    console.log(process)
     const fetchGeo = async() => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
-      await Axios.get(API.GEO):
+      await Axios.get("/.netlify/functions/lambda"):
       {data:testGeoData}
       
-      setGeoData(response.data)
+      setGeoData(parse(response.data))
     }
     fetchGeo();
   }, [])
