@@ -6,7 +6,7 @@ import Nav from './Components/Nav'
 import Main from './Container/Main'
 import Footer from './Container/Footer'
 
-import { API, ENV } from './Constants';
+import { API } from './Constants';
 
 // import testAstroData from './Data/testAstroData.json'
 // import testGeoData from './Data/testGeoData.json'
