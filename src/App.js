@@ -8,7 +8,6 @@ import Footer from './Container/Footer'
 
 import { API, ENV } from './Constants';
 
-import { parse, stringify } from 'flatted/cjs'
 
 // import testAstroData from './Data/testAstroData.json'
 // import testGeoData from './Data/testGeoData.json'
