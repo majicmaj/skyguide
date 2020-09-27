@@ -1,0 +1,118 @@
+/* Global */
+@import '~antd/lib/style/themes/default.less';
+@import '~antd/dist/antd.dark.less';
+@import './theme.less';
+
+:root {
+  --progress-height: 16px;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+input {
+  background: black;
+  color: white;
+  font-size: inherit;
+  font-family: inherit;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+.App {
+  height: 100vh;
+  min-height: 500px;
+  font-size: 20px;
+  font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.Nav input {
+  text-align: center;
+  border: none;
+}
+
+.Main {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 10px;
+}
+.Now h1 {
+  font-size: 3rem;
+  margin: 0; 
+}
+.Now .description {
+  font-size: 18px;
+  margin: 0;
+  line-height: 22px;
+}
+.Now Col {
+  text-align: center;
+}
+.Now img {
+  margin: 0 auto;
+}
+.Footer {
+  font-size: 14px;
+  padding: 5px 20px;
+}
+/* Shared */
+.primary {
+  color: @primary-color;
+}
+.secondary {
+  color: @secondary-color;
+}
+.medium {
+  height: 128px;
+  width: 128px;
+}
+.small {
+  height: 48px;
+  width: 48px;
+}
+.progress {
+  height: var(--progress-height);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.progress .bar {
+  height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.progress .fill {
+  height: 100%;
+  width: 90vw;
+  background: rgb(231,217,240);
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(270deg, rgba(231,217,240,1) 0%, rgba(75,207,249,1) 100%);
+}
+.card {
+  background: #121012;
+  border-radius: 20px;
+  padding: 20px;
+  margin: auto;
+  margin-bottom: 20px;
+  min-height: 168px;
+}
+.centered {
+  text-align: center;
+}
+.nomargin {
+  margin: 0;
+}
+@media only screen and (max-width: 768px) {
+  .Stats {
+    padding: 15px;
+  }
+}

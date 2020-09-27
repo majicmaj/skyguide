@@ -1,10 +1,17 @@
 import React from 'react'
+import { Tooltip } from 'antd';
+import Text from 'antd/lib/typography/Text';
 
 const Progress = (props) => {
     const value = 100 * (props.value/props.max)
-    return <div className="progress">
-        <div className="bar" style={{width: value + "%"}}/>
-    </div>
+    return <Tooltip title={`${props.value} / ${props.max}`}>
+        <Text>{props.label}</Text>
+        <div className="progress">
+            <div className="bar" style={{width: value + "%"}}>
+                <div className="fill"/>
+            </div>
+        </div>
+    </Tooltip>
 }
 
 Progress.defaultProps = {

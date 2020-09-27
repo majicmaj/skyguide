@@ -1,3 +1,5 @@
+import { Button } from 'antd';
+import Text from 'antd/lib/typography/Text';
 import React, { useEffect, useState } from 'react';
 
 const Nav = (props) => {
@@ -7,9 +9,9 @@ const Nav = (props) => {
         setTitle(props.geo.city)
     }, [props.geo])
     return<nav className="Nav">
-    <p>=</p>
-    <p>{title}</p>
-    <p>o</p>
+    <Button type="text">=</Button>
+    <Text>{title}</Text>
+    <Button type="text">o</Button>
 </nav>
 }
 
