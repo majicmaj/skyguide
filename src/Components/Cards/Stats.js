@@ -1,4 +1,5 @@
 import React from 'react';
+import { getFavorability } from '../../Actions';
 
 import Progress from '../Shared/Progress'
 const Stats = (props) => {
@@ -6,11 +7,12 @@ const Stats = (props) => {
     const data = () => {
         if (props.astro.dataseries) {
             const astro = props.astro.dataseries
-            const favorability = 30 - (astro[0].cloudcover + astro[0].seeing + astro[0].transparency)
+            console.log(astro)
+            const favorability = getFavorability(astro[0].cloudcover, astro[0].seeing, astro[0].transparency)
             return <div className="Stats card">
              <Progress
                 value={favorability}
-                max={27}
+                max={45}
                 label='Stargazing Favorability'
             />   
             <Progress
