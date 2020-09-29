@@ -1,16 +1,18 @@
 import {rainy, cloudy, moon, cloudyNight, sun, cloudyMorning, windSign, windy, snowy, hail, showers, thunder, tornado, sunrise} from './CDN';
 export const getFavorability = (cover, seeing, transparency) => {
-    cover = ((cover/9)**0.5) * 9
+    cover = ((cover/9)**0.1) * 9
     console.log(`COVER: ${cover}`)
-    const fav = 49 - (3*cover + transparency + seeing)
+    const fav = 99 - (8*cover + transparency + seeing)
     console.log(fav)
     return fav
 }
 export const getIcon = (description, night) => {
-
-    if (description.toLowerCase().includes("rain")) return rainy
-    if (description.toLowerCase().includes("cloud")) return cloudy
-
+    description = description.toLowerCase()
+    if (description.includes("sun") && description.includes("cloud")) return cloudyMorning
+    if (description.includes("rain")) return rainy
+    if (description.includes("cloud")) return cloudy
+    if (description.includes("thunder")) return thunder
+    if (description.includes("snow")) return snowy
     switch(description.toLowerCase()) {
         case "partly sunny":
             return cloudyMorning

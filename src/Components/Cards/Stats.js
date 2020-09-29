@@ -12,7 +12,7 @@ const Stats = (props) => {
             return <div className="Stats card">
              <Progress
                 value={favorability}
-                max={45}
+                max={99}
                 label='Stargazing Favorability'
             />   
             <Progress

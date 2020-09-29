@@ -35,10 +35,9 @@ const App = () => {
   }, [])
 
   useEffect(()=> {
-    console.log("IM CALLED") 
     const fetchURLS = async () => {
       const response = await Axios.get(
-        `${API.WEATHER}${geoData.latitude},${geoData.longitude}`
+        `${API.WEATHER}${geoData.lat},${geoData.lon}`
         )
       return {
         forecast: response.data.properties.forecast,
