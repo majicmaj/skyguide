@@ -8,7 +8,7 @@ const Now = (props) => {
         const hourly = props.hourly.periods[0]
         return<div className="Now card">
                 <Row justify="space-between">
-                    <Col className="centered" span={12}>
+                    <Col className="left" span={12}>
                         <h1>{hourly.temperature}°</h1>
                         <Text type="secondary" className="description">{hourly.shortForecast}</Text>
                     </Col>
