@@ -1,4 +1,5 @@
 import { Col, Row } from 'antd';
+import Text from 'antd/lib/typography/Text';
 import React from 'react';
 import {sunset, sunrise} from "../../CDN"
 
@@ -12,12 +13,12 @@ const Day = (props) => {
         return<div className="Day card">
                 <Row>
                     <Col span={12} className="centered">
-                        <strong className="nomargin">{weather[0].name}</strong>
+                        <Text type="secondary" className="nomargin">{weather[0].name}</Text>
                         <h2 className="nomargin">{weather[0].temperature}</h2>
                         <img className="small" alt={weather[0].name} src={isNight(weather[0].name)}/>
                     </Col>
                     <Col span={12} className="centered">
-                        <strong className="nomargin">{weather[1].name}</strong>
+                        <Text type="secondary" className="nomargin">{weather[1].name}</Text>
                         <h2 className="nomargin">{weather[1].temperature}</h2>
                         <img className="small" alt={weather[1].name} src={isNight(weather[1].name)}/>
                     </Col>
@@ -28,12 +29,12 @@ const Day = (props) => {
         return<div className="Day card">
             <Row justify="space-between">
                     <Col span={12} className="centered">
-                        <p className="nomargin"></p>
+                        <Text type="secondary" className="nomargin">Loading...</Text>
                         <h2 className="nomargin">--°</h2>
                         <img className="small" alt="night"src={sunset}/>
                     </Col>
                     <Col span={12} className="centered">
-                        <p className="nomargin"></p>
+                        <Text type="secondary" className="nomargin">Loading...</Text>
                         <h2 className="nomargin">--°</h2>
                         <img className="small" alt="morning"src={sunrise}/>
                     </Col>

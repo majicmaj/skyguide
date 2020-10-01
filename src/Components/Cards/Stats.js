@@ -10,7 +10,7 @@ const Stats = (props) => {
             return <div className="Stats card">
              <Progress
                 value={favorability}
-                max={99}
+                max={9}
                 label='Stargazing Favorability'
             />   
             <Progress
@@ -32,12 +32,30 @@ const Stats = (props) => {
         }
         else {
             return <div className="Stats card">
-                <Progress
-                value={1}
-                max={1}
-                loading={true}
-                label='Loading Stats...'
-                />
+            <Progress
+            value={1}
+            max={1}
+            loading={true}
+            label='Loading Stats...'
+            />
+            <Progress
+            value={1}
+            max={1}
+            loading={true}
+            label='Cloud Cover'
+            />
+            <Progress
+            value={1}
+            max={1}
+            loading={true}
+            label='Seeing'
+            />
+            <Progress
+            value={1}
+            max={1}
+            loading={true}
+            label='Transparency'
+            />
             </div>
         }
     }

@@ -38,6 +38,7 @@ const App = () => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${LAMBDA}?API=GEOCODE&lat=${coords.lat}&lon=${coords.lon}`):
       {data:{city:'Gotham',state:'NY'}}
+      console.log({response: response, coords:coords})
       setGeoData({
         city: response.data.city,
         region: response.data.state,
@@ -87,6 +88,7 @@ const App = () => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${LAMBDA}?API=ASTRO&lat=${geoData.lat}&lon=${geoData.lon}`):
       {data:testAstroData}
+      console.log(response)
       setAstroData(response.data);
     }
     if (geoData && geoData.lon && geoData.lat) {

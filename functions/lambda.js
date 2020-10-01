@@ -14,8 +14,6 @@ exports.handler = async(event, context) => {
                 }
                 const response = await axios.get(`${API.GEO}${ip()}`)
                 const data = {
-                    event: event,
-                    ip: ip(),
                     status: response.data.status,
                     city: response.data.city,
                     region: response.data.region,
@@ -48,10 +46,7 @@ exports.handler = async(event, context) => {
             case "ASTRO":
                 if (params.lat && params.lon) {
                     const response = await axios.get(
-                        `${API.ASTRO.HEAD}
-                        lat=${params.lat}
-                        &lon=-${params.lon}
-                        ${API.ASTRO.TAIL}`
+                        `${API.ASTRO.HEAD}lon=-${params.lon}&lat=${params.lat}${API.ASTRO.TAIL}`
                         )
                     const data = {
                         status: response.status,

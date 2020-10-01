@@ -104,11 +104,11 @@ min-height: calc(100vh - 104px);
   background: @primary-color;
   border-radius: 15px;
   overflow: hidden;
-  background: linear-gradient(270deg, @secondary-color, @primary-color, @secondary-color);
-  background-size: 200%; 
-  -webkit-animation: loading 5s ease infinite;
-  -moz-animation: loading 5s ease infinite;
-  animation: loading 5s ease infinite;
+  background: linear-gradient(270deg, @secondary-color, @primary-color, @secondary-color, @primary-color);
+  background-size: 300%; 
+  -webkit-animation: loading 3s infinite;
+  -moz-animation: loading 3s infinite;
+  animation: loading 3s infinite;
 }
 .card {
   display: flex;
@@ -122,7 +122,18 @@ min-height: calc(100vh - 104px);
   min-height: 168px;
 }
 .centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   text-align: center;
+}
+.left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
 }
 .nomargin {
   margin: 0;
@@ -134,16 +145,13 @@ min-height: calc(100vh - 104px);
 }
 @-webkit-keyframes loading {
   0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  100%{background-position:100% 50%}
 }
 @-moz-keyframes loading {
   0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  100%{background-position:100% 50%}
 }
 @keyframes loading {
   0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+  100%{background-position:100% 50%}
 }

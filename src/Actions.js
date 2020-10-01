@@ -1,7 +1,7 @@
 import {rainy, cloudy, moon, cloudyNight, sun, cloudyMorning, windSign, windy, snowy, hail, showers, thunder, tornado, sunrise} from './CDN';
 export const getFavorability = (cover, seeing, transparency) => {
     cover = ((cover/9)**0.1) * 9
-    const fav = 99 - (8*cover + transparency + seeing)
+    const fav = Math.ceil((99 - (8*cover + transparency + seeing))/9)
     return fav
 }
 export const getIcon = (description, night) => {
