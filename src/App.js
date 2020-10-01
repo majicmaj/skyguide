@@ -34,7 +34,7 @@ const App = () => {
     }
     const success = async(pos) => {
       const coords = ({lat: pos.coords.latitude, lon: pos.coords.longitude})
-      const response = (process.env.NODE_ENV === ENV.DEV)?
+      const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${LAMBDA}?API=GEOCODE&lat=${coords.lat}&lon=${coords.lon}`):
       {data:{city:'Test',state:'TS'}}
       setGeoData({
