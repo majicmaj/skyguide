@@ -6,15 +6,15 @@ import Nav from './Components/Nav'
 import Main from './Container/Main'
 import Footer from './Container/Footer'
 
-import { API, ENV, LAMBDA } from './Constants';
+import { ENV, LAMBDA } from './Constants';
 
 
-import testAstroData from './Data/testAstroData.json'
-import testGeoData from './Data/testGeoData.json'
-import testForecastData from './Data/testForecastData.json'
-import testForecastHourlyData from './Data/testForecastHourlyData.json'
-// const testAstroData = {}
-// const testGeoData = {}
+// import testAstroData from './Data/testAstroData.json'
+// import testGeoData from './Data/testGeoData.json'
+// import testForecastData from './Data/testForecastData.json'
+// import testForecastHourlyData from './Data/testForecastHourlyData.json'
+const testAstroData = {}
+const testGeoData = {}
 // const testForecastData = {}
 // const testForecastHourlyData = {}
 
