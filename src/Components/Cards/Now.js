@@ -3,8 +3,8 @@ import React from 'react';
 import { getIcon } from '../../Actions';
 import cloudy from '../../CDN/cloudy.png'
 const Now = (props) => {
-    if (props.hourly && props.hourly.properties) {
-        const hourly = props.hourly.properties.periods[0]
+    if (props.hourly && props.hourly.periods) {
+        const hourly = props.hourly.periods[0]
         return<div className="Now card">
             <Row justify="space-between">
                 <Col span={12}>
@@ -12,7 +12,7 @@ const Now = (props) => {
     <p className="description">{hourly.shortForecast}</p>
                     </Col>
                     <Col span={12} className="centered">
-                        <img className="medium" alt={hourly.shortForecast} src={getIcon(hourly.shortForecast)}/>
+                        <img className="medium" alt={hourly.shortForecast} src={getIcon(hourly.shortForecast, )}/>
                     </Col>
             </Row></div>
     }

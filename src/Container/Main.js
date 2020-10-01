@@ -10,7 +10,7 @@ const Main = (props) => {
     return <div className="Main">
         <Row gutter={20}>
             <Col span={24} md={12}>
-            <Now weather={props.weather} hourly={props.hourly}/>
+            <Now hourly={props.hourly}/>
     
             </Col>
             <Col span={24} md={12}>

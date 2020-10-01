@@ -3,8 +3,9 @@ import React from 'react';
 import {sunset, sunrise} from "../../CDN"
 
 const Day = (props) => {
-    if (props.weather && props.weather.properties) {
-        const weather = props.weather.properties.periods
+    if (props.weather && props.weather.periods) {
+        const weather = props.weather.periods
+        console.log(weather)
         const isNight = (name) => {
             return (name.toLowerCase().includes('night'))?sunset:sunrise
         }
