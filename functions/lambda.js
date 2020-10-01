@@ -7,10 +7,18 @@ exports.handler = async(event, context) => {
         const params = event.queryStringParameters
         switch(params.API) {
             case "GEO":
-                const response = await axios.get(`API.GEO${event.headers['client-ip']}`)
+                const ip = () => {
+                    if (event.headers['X-Forwarded-For'] === "127.0.0.1") return ''
+                    if (event.headers['X-Nf-Client-Connection-Ip']) return event.headers['X-Nf-Client-Connection-Ip']
+                    return ''
+                }
+                const response = await axios.get(`${API.GEO}${ip()}`)
                 const data = {
+                    event: event,
+                    ip: ip(),
                     status: response.data.status,
                     city: response.data.city,
+                    region: response.data.region,
                     lat: response.data.lat,
                     lon: response.data.lon
                 }

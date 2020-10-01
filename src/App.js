@@ -30,6 +30,7 @@ const App = () => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${LAMBDA}?API=GEO`):
       {data:testGeoData}
+      console.log(response.data)
       setGeoData(response.data)
     }
     const success = async(pos) => {
