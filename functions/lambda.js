@@ -7,7 +7,7 @@ exports.handler = async(event, context) => {
         const params = event.queryStringParameters
         switch(params.API) {
             case "GEO":
-                const response = await axios.get(API.GEO)
+                const response = await axios.get(`API.GEO${event.headers['client-ip']}`)
                 const data = {
                     status: response.data.status,
                     city: response.data.city,
@@ -18,6 +18,25 @@ exports.handler = async(event, context) => {
                     statusCode: 200, 
                     body: JSON.stringify(data)
                 }
+
+            case "GEOCODE":
+                if (params.lat && params.lon) {
+                    const response = await axios.get(
+                        `${API.GEOCODE.HEAD}${params.lat},${params.lon}${API.GEOCODE.TAIL}`)
+                    const data = {
+                        city: response.data.city,
+                        state: response.data.state
+                    }
+                    return {
+                        statusCode: 200, 
+                        body: JSON.stringify(data)
+                    }
+                }
+                return {
+                    statusCode: 400,
+                    body: JSON.stringify({message: "Missing Params"})
+                }
+
             case "ASTRO":
                 if (params.lat && params.lon) {
                     const response = await axios.get(

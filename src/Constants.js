@@ -9,10 +9,22 @@ export const API = {
         HOURLY: '/hourly'
     },
     GEO: 'http://ip-api.com/json/',
-    GRID: 'https://api.weather.gov/points/'
+    GRID: 'https://api.weather.gov/points/',
+    GEOCODE: {
+        HEAD: 'https://geocode.xyz/', 
+        TAIL:'?geoit=json'
+    }
 }
 export const LAMBDA = "/.netlify/functions/lambda"
 export const ENV = {
     PROD: 'production',
-    DEV: 'developments'
+    DEV: 'development'
 }
+export const NAVIGATOR = {
+    options : {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+  }
+}
+  

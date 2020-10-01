@@ -6,15 +6,15 @@ import Nav from './Components/Nav'
 import Main from './Container/Main'
 import Footer from './Container/Footer'
 
-import { ENV, LAMBDA } from './Constants';
+import { NAVIGATOR, ENV, LAMBDA } from './Constants';
 
 
-// import testAstroData from './Data/testAstroData.json'
-// import testGeoData from './Data/testGeoData.json'
-// import testForecastData from './Data/testForecastData.json'
-// import testForecastHourlyData from './Data/testForecastHourlyData.json'
-const testAstroData = {}
-const testGeoData = {}
+import testAstroData from './Data/testAstroData.json'
+import testGeoData from './Data/testGeoData.json'
+import testForecastData from './Data/testForecastData.json'
+import testForecastHourlyData from './Data/testForecastHourlyData.json'
+// const testAstroData = {}
+// const testGeoData = {}
 // const testForecastData = {}
 // const testForecastHourlyData = {}
 
@@ -32,7 +32,24 @@ const App = () => {
       {data:testGeoData}
       setGeoData(response.data)
     }
-    fetchGeo();
+    const success = async(pos) => {
+      const coords = ({lat: pos.coords.latitude, lon: pos.coords.longitude})
+      const response = (process.env.NODE_ENV === ENV.DEV)?
+      await Axios.get(`${LAMBDA}?API=GEOCODE&lat=${coords.lat}&lon=${coords.lon}`):
+      {data:{city:'Test',state:'TS'}}
+      setGeoData({
+        city: response.data.city,
+        region: response.data.state,
+        lat: coords.lat,
+        lon: coords.lon
+      })
+    }
+    const error = (err) => {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+      fetchGeo();
+    }
+    navigator.geolocation.getCurrentPosition(success, error, NAVIGATOR.options);
+    
   }, [])
 
   useEffect(()=> {
@@ -52,7 +69,7 @@ const App = () => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`
       ${LAMBDA}?API=WEATHER&gridX=${grid.gridX}&gridY=${grid.gridY}${hourly ? "&hourly=true" : ""}`)
-      :{}
+      : {data: (hourly ? testForecastHourlyData.properties : testForecastData.properties)}
       hourly ? setHourlyWeatherData(response.data) : setWeatherData(response.data)
     }
     if (grid && grid.gridX && grid.gridY) {

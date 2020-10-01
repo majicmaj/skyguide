@@ -6,15 +6,16 @@ const Now = (props) => {
     if (props.hourly && props.hourly.periods) {
         const hourly = props.hourly.periods[0]
         return<div className="Now card">
-            <Row justify="space-between">
-                <Col span={12}>
-    <h1>{hourly.temperature}°</h1>
-    <p className="description">{hourly.shortForecast}</p>
+                <Row justify="space-between">
+                    <Col span={12}>
+                        <h1>{hourly.temperature}°</h1>
+                        <p className="description">{hourly.shortForecast}</p>
                     </Col>
                     <Col span={12} className="centered">
                         <img className="medium" alt={hourly.shortForecast} src={getIcon(hourly.shortForecast, )}/>
                     </Col>
-            </Row></div>
+                </Row>
+            </div>
     }
     else {
         return<div className="Now card">
