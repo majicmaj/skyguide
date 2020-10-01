@@ -10,7 +10,7 @@ const Now = (props) => {
                 <Row justify="space-between">
                     <Col className="left" span={12}>
                         <h1>{hourly.temperature}°</h1>
-                        <Text type="secondary" className="description">{hourly.shortForecast}</Text>
+                        <Text className="description">{hourly.shortForecast}</Text>
                     </Col>
                     <Col span={12} className="centered">
                         <img className="medium" alt={hourly.shortForecast} src={getIcon(hourly.shortForecast, )}/>
@@ -23,7 +23,7 @@ const Now = (props) => {
         <Row justify="space-between">
             <Col className="left" span={12}>
                 <h1>--°</h1>
-                        <Text type="secondary" className="description">Loading...</Text>
+                        <Text className="description">Loading...</Text>
             </Col>
                     <Col span={12} className="centered">
                         <img className="medium" alt="cloudy" src={cloudy}/>

@@ -18,7 +18,7 @@ export const API = {
 export const LAMBDA = "/.netlify/functions/lambda"
 export const ENV = {
     PROD: 'production',
-    DEV: 'developments'
+    DEV: 'development'
 }
 export const NAVIGATOR = {
     options : {

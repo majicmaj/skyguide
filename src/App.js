@@ -8,16 +8,6 @@ import Footer from './Container/Footer'
 
 import { NAVIGATOR, ENV, LAMBDA } from './Constants';
 
-
-// import testAstroData from './Data/testAstroData.json'
-// import testGeoData from './Data/testGeoData.json'
-// import testForecastData from './Data/testForecastData.json'
-// import testForecastHourlyData from './Data/testForecastHourlyData.json'
-const testAstroData = {}
-const testGeoData = {}
-const testForecastData = {}
-const testForecastHourlyData = {}
-
 const App = () => {
   const [astroData, setAstroData] = useState({})
   const [geoData, setGeoData] = useState({})
@@ -29,7 +19,7 @@ const App = () => {
     const fetchGeo = async() => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${LAMBDA}?API=GEO`):
-      {data:testGeoData}
+      {data: {city: 'Gotham', region: 'VA', lat: 39, lon: -77}}
       console.log(response.data)
       setGeoData(response.data)
     }
@@ -37,7 +27,7 @@ const App = () => {
       const coords = ({lat: pos.coords.latitude, lon: pos.coords.longitude})
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${LAMBDA}?API=GEOCODE&lat=${coords.lat}&lon=${coords.lon}`):
-      {data:{city:'Gotham',state:'NY'}}
+      {data:{city:'Gotham',state:'VA'}}
       console.log({response: response, coords:coords})
       setGeoData({
         city: response.data.city,
@@ -68,10 +58,27 @@ const App = () => {
 
   useEffect(()=> {
     const fetchWeather = async (hourly = false) => {
+      const testHourly = {periods: [
+        {
+          temperature: 61,
+          shortForecast: "Isolated Rain Showers"
+      },{
+        temperature: 72,
+        shortForecast: "Isolated Rain Showers"}]}
+      const testDaily = {periods: [
+        { 
+          name: "Tonight",
+          temperature: 61,
+          shortForecast: "Isolated Rain Showers"
+      },{
+        name: "Tomorrow",
+        temperature: 72,
+        shortForecast: "Isolated Rain Showers"
+      }]}
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`
       ${LAMBDA}?API=WEATHER&gridX=${grid.gridX}&gridY=${grid.gridY}${hourly ? "&hourly=true" : ""}`)
-      : {data: (hourly ? testForecastHourlyData.properties : testForecastData.properties)}
+      : {data: (hourly ? testHourly : testDaily)}
       hourly ? setHourlyWeatherData(response.data) : setWeatherData(response.data)
     }
     if (grid && grid.gridX && grid.gridY) {
@@ -87,7 +94,10 @@ const App = () => {
     const fetchAstro = async() => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${LAMBDA}?API=ASTRO&lat=${geoData.lat}&lon=${geoData.lon}`):
-      {data:testAstroData}
+      {data:{dataseries: [
+        {cloudcover: 9, seeing: 4, transparency: 8}
+      ]
+    }}
       console.log(response)
       setAstroData(response.data);
     }
