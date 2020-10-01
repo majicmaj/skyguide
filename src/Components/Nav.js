@@ -9,9 +9,13 @@ const Nav = (props) => {
         setTitle(props.geo.city)
     }, [props.geo])
     return<nav className="Nav">
-    <Button type="text">=</Button>
+    <Button type="text">
+        <i className="fas fa-bars"/>
+    </Button>
     <Text>{title?title:"loading..."}</Text>
-    <Button type="text">o</Button>
+    <Button type="text">
+        <i className="fas fa-search-location"/>
+        </Button>
 </nav>
 }
 

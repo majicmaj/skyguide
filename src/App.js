@@ -53,7 +53,7 @@ const App = () => {
       await Axios.get(`
       ${LAMBDA}?API=WEATHER&gridX=${grid.gridX}&gridY=${grid.gridY}${hourly ? "&hourly=true" : ""}`)
       :{}
-      hourly ? setWeatherData(response.data) : setHourlyWeatherData(response.data)
+      hourly ? setHourlyWeatherData(response.data) : setWeatherData(response.data)
     }
     if (grid && grid.gridX && grid.gridY) {
       fetchWeather();
