@@ -9,14 +9,14 @@ import Footer from './Container/Footer'
 import { NAVIGATOR, ENV, LAMBDA } from './Constants';
 
 
-import testAstroData from './Data/testAstroData.json'
-import testGeoData from './Data/testGeoData.json'
-import testForecastData from './Data/testForecastData.json'
-import testForecastHourlyData from './Data/testForecastHourlyData.json'
-// const testAstroData = {}
-// const testGeoData = {}
-// const testForecastData = {}
-// const testForecastHourlyData = {}
+// import testAstroData from './Data/testAstroData.json'
+// import testGeoData from './Data/testGeoData.json'
+// import testForecastData from './Data/testForecastData.json'
+// import testForecastHourlyData from './Data/testForecastHourlyData.json'
+const testAstroData = {}
+const testGeoData = {}
+const testForecastData = {}
+const testForecastHourlyData = {}
 
 const App = () => {
   const [astroData, setAstroData] = useState({})
@@ -37,7 +37,7 @@ const App = () => {
       const coords = ({lat: pos.coords.latitude, lon: pos.coords.longitude})
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${LAMBDA}?API=GEOCODE&lat=${coords.lat}&lon=${coords.lon}`):
-      {data:{city:'Test',state:'TS'}}
+      {data:{city:'Gotham',state:'NY'}}
       setGeoData({
         city: response.data.city,
         region: response.data.state,
