@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ConfigProvider } from 'antd';
 import Axios from 'axios'
 import ar from 'antd/es/locale/ar_EG';
@@ -11,15 +11,21 @@ import Footer from './Container/Footer'
 
 import { NAVIGATOR, ENV, LAMBDA } from './Constants';
 import i18n from './i18n';
+import useStickyState from './Hooks/useStickyState';
 
 const App = () => {
-  const [astroData, setAstroData] = useState({})
-  const [geoData, setGeoData] = useState({})
-  const [weatherData, setWeatherData] = useState({})
-  const [hourlyWeatherData, setHourlyWeatherData] = useState({})
-  const [grid, setGrid] = useState({})
-  const [direction, setDirection] = useState("ltr")
+  const [astroData, setAstroData] = useStickyState({}, 'astro')
+  const [geoData, setGeoData] = useStickyState({}, 'geo')
+  const [weatherData, setWeatherData] = useStickyState({}, 'weather')
+  const [hourlyWeatherData, setHourlyWeatherData] = useStickyState({}, 'hourly')
+  const [grid, setGrid] = useStickyState({}, 'grid')
+  const [direction, setDirection] = useStickyState('ltr', 'dir')
+  const [lang, setLang] = useStickyState('en', 'lang')
   
+  useEffect(() => {
+    i18n.changeLanguage(lang)
+  }, [lang])
+
   useEffect(()=> {
     const fetchGeo = async() => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
@@ -45,7 +51,7 @@ const App = () => {
     }
     navigator.geolocation.getCurrentPosition(success, error, NAVIGATOR.options);
     
-  }, [])
+  }, [setGeoData])
 
   useEffect(()=> {
     const fetchGRID = async () => {
@@ -57,7 +63,7 @@ const App = () => {
     if (geoData && geoData.lat && geoData.lon) {
       fetchGRID()
     }
-  }, [geoData])
+  }, [geoData, setGrid])
 
   useEffect(()=> {
     const fetchWeather = async (hourly = false) => {
@@ -79,8 +85,7 @@ const App = () => {
         shortForecast: "Isolated Rain Showers"
       }]}
       const response = (process.env.NODE_ENV !== ENV.DEV)?
-      await Axios.get(`
-      ${LAMBDA}?API=WEATHER&gridX=${grid.gridX}&gridY=${grid.gridY}${hourly ? "&hourly=true" : ""}`)
+      await Axios.get(`${LAMBDA}?API=WEATHER&gridX=${grid.gridX}&gridY=${grid.gridY}${hourly ? "&hourly=true" : ""}`)
       : {data: (hourly ? testHourly : testDaily)}
       hourly ? setHourlyWeatherData(response.data) : setWeatherData(response.data)
     }
@@ -90,7 +95,7 @@ const App = () => {
     }
     else {
     }
-  }, [grid])
+  }, [grid, setHourlyWeatherData, setWeatherData])
 
   useEffect(()=> {
     const fetchAstro = async() => {
@@ -105,10 +110,10 @@ const App = () => {
     if (geoData && geoData.lon && geoData.lat) {
       fetchAstro();
     }
-}, [geoData, geoData.status])
+}, [geoData, geoData.status, setAstroData])
 
   const getLocale = () => {
-    switch(i18n.language) {
+    switch(lang) {
       case 'ar':
         return ar
       case 'en':
@@ -119,8 +124,8 @@ const App = () => {
   }
   return(
     <div className="App" dir={direction}>
-      <ConfigProvider direction={direction} locale={getLocale}>
-        <Nav geo={geoData} setDirection={setDirection}/>
+      <ConfigProvider direction={direction} locale={getLocale()}>
+        <Nav geo={geoData} setDirection={setDirection} setLang={setLang}/>
         <Main astro={astroData} weather={weatherData} hourly={hourlyWeatherData}/>
         <Footer/>
       </ConfigProvider>

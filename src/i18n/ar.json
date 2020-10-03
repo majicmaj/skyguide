@@ -29,5 +29,12 @@
     "icons by": "الصور من تصميم",
 
     "sunny": "مشمس",
-    "cloudy": "غائم"
+    "cloudy": "غائم",
+    "mostly clear": "معظم السماء صافية",
+    "isolated rain showers": "زخات مطر متفرقة",
+    "rain showers": "زخات المطر",
+    "rain": "المطر",
+
+    "version": "إصدار رقم",
+    "add me to your home screen": "أضفني إلى شاشتك الرئيسية!"
 }

@@ -27,4 +27,4 @@ export const NAVIGATOR = {
         maximumAge: 0
   }
 }
-  
+export const version = '0.1'
