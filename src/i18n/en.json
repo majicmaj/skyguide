@@ -30,6 +30,10 @@
 
     "sunny": "Sunny",
     "cloudy": "Cloudy",
+    "mostly clear": "Mostly Clear",
+    "isolated rain showers": "Isolated Rain Showers",
+    "rain showers": "Rain Showers",
+    "rain": "Rain",
 
     "version": "Version",
     "add me to your home screen": "Add me to your home screen!"

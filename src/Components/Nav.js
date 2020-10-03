@@ -10,7 +10,7 @@ const Nav = (props) => {
     const [title, setTitle] = useState('Sky Guide')
     const [deferredPrompt, setDeferredPrompt] = useState(null)
     const camelName = (name) => name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
-    const showInstall = () => deferredPrompt !== null ? <i className="fas fa-download"/> : <></>
+    const showInstall = () => deferredPrompt !== null ? <i className="fas fa-arrow-circle-down" onClick={()=> deferredPrompt.prompt()}/>: <></>
     useEffect(()=> {
         if (props.geo.city) setTitle(<><b>{camelName(props.geo.city)}</b>, {props.geo.region}</>)
     }, [props.geo])
@@ -20,7 +20,7 @@ const Nav = (props) => {
             setDeferredPrompt(e)
           });
     }, [])
-    
+
     return<nav className="Nav">
         <Button type="text">
             {showInstall()}
