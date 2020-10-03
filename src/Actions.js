@@ -1,7 +1,8 @@
 import {rainy, cloudy, moon, cloudyNight, sun, cloudyMorning, windSign, windy, snowy, hail, showers, thunder, tornado, sunrise} from './CDN';
+import i18n from './i18n';
 export const getFavorability = (cover, seeing, transparency) => {
     cover = ((cover/9)**0.1) * 9
-    const fav = Math.ceil((99 - (8*cover + transparency + seeing))/9)
+    const fav = Math.ceil((11*cover - transparency - seeing)/9)
     return fav
 }
 export const getIcon = (description, night) => {
@@ -94,4 +95,22 @@ export const getIcon = (description, night) => {
 
     if (description.toLowerCase().includes("rain")) return rainy
     return cloudy
+}
+export const tNum = (text) => {
+    if (i18n.language !== 'ar') {
+        return text
+    }
+    text += ""
+    const arabic = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩']
+    const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    let translated = ""
+    for (let i = 0; i < text.length; i++) {
+        if (nums.includes(text[i])) {
+            translated = translated + arabic[nums.indexOf(text[i])]
+        }
+        else {
+            translated += text[i]
+        }
+    }
+    return translated
 }

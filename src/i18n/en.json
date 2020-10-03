@@ -1,0 +1,33 @@
+{
+    "stargazing favorability" : "Stargazing Favorability",
+    "cloud cover": "Cloud Cover",
+    "seeing": "Seeing",
+    "transparency": "Transperency",
+
+    "tonight": "Tonight",
+    "tomorrow": "Tomorrow",
+    "this afternoon": "This Afternoon",
+
+    "sunday": "Sunday",
+    "sunday night": "Sunday Night",
+    "monday": "Monday",
+    "monday night": "Monday Night",
+    "tuesday": "Tuesday",
+    "tuesday night": "Tuesday Night",
+    "wednesday": "Wednesday",
+    "wednesday night": "Wednesday Night",
+    "thursday": "Thursday",
+    "thursday night": "Thursday Night",
+    "friday": "Friday",
+    "friday night": "Friday Night",
+    "saturday": "Saturday",
+    "saturday night": "Saturday Night",
+
+    "loading": "Loading",
+
+    "designed by": "Designed by",
+    "icons by": "Icons by",
+
+    "sunny": "Sunny",
+    "cloudy": "Cloudy"
+}

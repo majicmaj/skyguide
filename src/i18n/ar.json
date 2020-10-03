@@ -1,0 +1,33 @@
+{
+    "stargazing favorability" : "الأفضلية لرؤية السماء",
+    "cloud cover": "التغطية السحابية",
+    "seeing": "استقرار الأجرام السماوية",
+    "transparency": "شفافية السماء",
+
+    "tonight": "الليلة",
+    "tomorrow": "غدا",
+    "this afternoon": "بعد ظهر",
+
+    "sunday": "الأحد",
+    "sunday night": "ليلة الاحد",
+    "monday": "الاثنين",
+    "monday night": "ليلة الاثنين",
+    "tuesday": "الثلاثاء",
+    "tuesday night": "ليلة الثلاثاء",
+    "wednesday": "الأربعاء",
+    "wednesday night": "ليلة الأربعاء",
+    "thursday": "الخميس",
+    "thursday night": "ليلة الخميس",
+    "friday": "الجمعة",
+    "friday night": "ليلة الجمعة",
+    "saturday": "السبت",
+    "saturday night": "ليلة السبت",
+
+    "loading": "جار التحميل",
+
+    "designed by": "الموقع من تصميم",
+    "icons by": "الصور من تصميم",
+
+    "sunny": "مشمس",
+    "cloudy": "غائم"
+}

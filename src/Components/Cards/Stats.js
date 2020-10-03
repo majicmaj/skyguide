@@ -1,8 +1,12 @@
 import React from 'react';
 import { getFavorability } from '../../Actions';
+import { useTranslation} from 'react-i18next';
 
 import Progress from '../Shared/Progress'
+
 const Stats = (props) => {
+    const {t } = useTranslation();
+
     const data = () => {
         if (props.astro.dataseries) {
             const astro = props.astro.dataseries
@@ -11,22 +15,22 @@ const Stats = (props) => {
              <Progress
                 value={favorability}
                 max={9}
-                label='Stargazing Favorability'
+                label={t('stargazing favorability')}
             />   
             <Progress
                 value={astro[0].cloudcover}
                 max={9}
-                label='Cloud Cover'
+                label={t('cloud cover')}
             />
             <Progress 
             value={astro[0].seeing} 
             max={9}
-            label='Seeing'
+            label={t('seeing')}
             />
             <Progress 
             value={astro[0].transparency} 
             max={9}
-            label='Transparency'
+            label={t('transparency')}
             />
             </div>
         }

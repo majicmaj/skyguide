@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { ConfigProvider } from 'antd';
 import Axios from 'axios'
+import ar from 'antd/es/locale/ar_EG';
+import en from 'antd/es/locale/en_US';
 import './App.less';
 
 import Nav from './Components/Nav'
@@ -7,6 +10,7 @@ import Main from './Container/Main'
 import Footer from './Container/Footer'
 
 import { NAVIGATOR, ENV, LAMBDA } from './Constants';
+import i18n from './i18n';
 
 const App = () => {
   const [astroData, setAstroData] = useState({})
@@ -14,13 +18,13 @@ const App = () => {
   const [weatherData, setWeatherData] = useState({})
   const [hourlyWeatherData, setHourlyWeatherData] = useState({})
   const [grid, setGrid] = useState({})
+  const [direction, setDirection] = useState("ltr")
   
   useEffect(()=> {
     const fetchGeo = async() => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${LAMBDA}?API=GEO`):
       {data: {city: 'Gotham', region: 'VA', lat: 39, lon: -77}}
-      console.log(response.data)
       setGeoData(response.data)
     }
     const success = async(pos) => {
@@ -28,7 +32,6 @@ const App = () => {
       const response = (process.env.NODE_ENV !== ENV.DEV)?
       await Axios.get(`${LAMBDA}?API=GEOCODE&lat=${coords.lat}&lon=${coords.lon}`):
       {data:{city:'Gotham',state:'VA'}}
-      console.log({response: response, coords:coords})
       setGeoData({
         city: response.data.city,
         region: response.data.state,
@@ -86,7 +89,6 @@ const App = () => {
       fetchWeather(true);
     }
     else {
-      console.log(grid)
     }
   }, [grid])
 
@@ -98,7 +100,6 @@ const App = () => {
         {cloudcover: 9, seeing: 4, transparency: 8}
       ]
     }}
-      console.log(response)
       setAstroData(response.data);
     }
     if (geoData && geoData.lon && geoData.lat) {
@@ -106,11 +107,23 @@ const App = () => {
     }
 }, [geoData, geoData.status])
 
+  const getLocale = () => {
+    switch(i18n.language) {
+      case 'ar':
+        return ar
+      case 'en':
+        return en
+      default:
+        return en
+    }
+  }
   return(
-    <div className="App">
-        <Nav geo={geoData}/>
+    <div className="App" dir={direction}>
+      <ConfigProvider direction={direction} locale={getLocale}>
+        <Nav geo={geoData} setDirection={setDirection}/>
         <Main astro={astroData} weather={weatherData} hourly={hourlyWeatherData}/>
         <Footer/>
+      </ConfigProvider>
     </div>
   );
 }
