@@ -1,18 +1,17 @@
 import React from 'react';
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import i18n from '../i18n';
 
 const LanguageDropdown = (props) => {
     const menu = <Menu>
         <Menu.Item onClick={()=> {
-                i18n.changeLanguage('en')
+                props.setLang('en')
                 props.setDirection('ltr')
             }}>
             English
         </Menu.Item>
         <Menu.Item onClick={()=> {
-                i18n.changeLanguage('ar')
+                props.setLang('ar')
                 props.setDirection('rtl')
         }}>
             العربية
