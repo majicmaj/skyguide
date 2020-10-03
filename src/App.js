@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Alert, ConfigProvider } from 'antd';
+import React, { useEffect } from 'react';
+import { ConfigProvider } from 'antd';
 import Axios from 'axios'
 import ar from 'antd/es/locale/ar_EG';
 import en from 'antd/es/locale/en_US';
@@ -12,7 +12,6 @@ import Footer from './Container/Footer'
 import { NAVIGATOR, ENV, LAMBDA } from './Constants';
 import i18n from './i18n';
 import useStickyState from './Hooks/useStickyState';
-import { useTranslation } from 'react-i18next';
 
 const App = () => {
   const [astroData, setAstroData] = useStickyState({}, 'astro')
@@ -23,7 +22,6 @@ const App = () => {
   const [direction, setDirection] = useStickyState('ltr', 'dir')
   const [lang, setLang] = useStickyState('en', 'lang')
   
-const {t} = useTranslation()
   useEffect(() => {
     i18n.changeLanguage(lang)
   }, [lang])

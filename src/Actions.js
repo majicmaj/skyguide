@@ -1,8 +1,5 @@
 import {rainy, cloudy, moon, cloudyNight, sun, cloudyMorning, windSign, windy, snowy, hail, showers, thunder, tornado, sunrise} from './CDN';
-import Alert from './Components/Shared/Alert';
 import i18n from './i18n';
-import React from 'react'
-
 export const getFavorability = (cover, seeing, transparency) => {
     cover = ((cover/9)**0.1) * 9
     const fav = Math.ceil((11*cover - transparency - seeing)/9)
