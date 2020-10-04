@@ -13,6 +13,8 @@ export const getIcon = (description, night) => {
     if (description.includes("thunder")) return thunder
     if (description.includes("snow")) return snowy
     switch(description.toLowerCase()) {
+        case "mostly sunny":
+            return cloudyMorning
         case "partly sunny":
             return cloudyMorning
         case "sunny":

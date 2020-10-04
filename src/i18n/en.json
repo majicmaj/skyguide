@@ -4,6 +4,7 @@
     "seeing": "Seeing",
     "transparency": "Transperency",
 
+    "today": "Today",
     "tonight": "Tonight",
     "tomorrow": "Tomorrow",
     "this afternoon": "This Afternoon",
@@ -31,10 +32,11 @@
     "sunny": "Sunny",
     "cloudy": "Cloudy",
     "mostly clear": "Mostly Clear",
+    "mostly sunny": "Mostly Sunny",
     "isolated rain showers": "Isolated Rain Showers",
     "rain showers": "Rain Showers",
     "rain": "Rain",
 
     "version": "Version",
-    "add me to your home screen": "Add me to your home screen!"
+    "add me to your home screen": "Press the button to add me to your homescreen!"
 }

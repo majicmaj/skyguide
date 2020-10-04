@@ -4,6 +4,7 @@
     "seeing": "استقرار الأجرام السماوية",
     "transparency": "شفافية السماء",
 
+    "today": "اليوم",
     "tonight": "الليلة",
     "tomorrow": "غدا",
     "this afternoon": "بعد ظهر",
@@ -30,11 +31,12 @@
 
     "sunny": "مشمس",
     "cloudy": "غائم",
-    "mostly clear": "معظم السماء صافية",
+    "mostly clear": "معظمها صافية",
+    "mostly sunny": "معظمها مشمس",
     "isolated rain showers": "زخات مطر متفرقة",
     "rain showers": "زخات المطر",
     "rain": "المطر",
 
     "version": "إصدار رقم",
-    "add me to your home screen": "أضفني إلى شاشتك الرئيسية!"
+    "add me to your home screen": "اضغط على الزر لإضافتي إلى شاشتك الرئيسية!"
 }

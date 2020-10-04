@@ -21,7 +21,7 @@ const App = () => {
   const [grid, setGrid] = useStickyState({}, 'grid')
   const [direction, setDirection] = useStickyState('ltr', 'dir')
   const [lang, setLang] = useStickyState('en', 'lang')
-  
+
   useEffect(() => {
     i18n.changeLanguage(lang)
   }, [lang])

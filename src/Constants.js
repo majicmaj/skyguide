@@ -18,7 +18,7 @@ export const API = {
 export const LAMBDA = "/.netlify/functions/lambda"
 export const ENV = {
     PROD: 'production',
-    DEV: 'developments'
+    DEV: 'development'
 }
 export const NAVIGATOR = {
     options : {
@@ -27,4 +27,4 @@ export const NAVIGATOR = {
         maximumAge: 0
   }
 }
-export const version = '0.1'
+export const version = '0.2'

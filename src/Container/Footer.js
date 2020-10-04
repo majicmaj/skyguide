@@ -10,8 +10,8 @@ const Footer = () => {
     return <footer className="Footer">
     <Row justify="space-around">
     <Text type="secondary">{t('designed by')} <a href="https://www.majdtarbin.com">MT</a></Text>
-    <Text type="secondary">{t('version')} {tNum(version)}</Text>
-    <Text type="secondary">{t('icons by')} <a className="secondary" href="https://www.flaticon.com/authors/fjstudio" title="fjstudio">fjstudio</a></Text>
+    <Text type="secondary">{t('version')} <span className="primary">{tNum(version)}</span></Text>
+    <Text type="secondary">{t('icons by')} <a href="https://www.flaticon.com/authors/fjstudio" title="fjstudio">fjstudio</a></Text>
     </Row></footer>}
 
 export default Footer

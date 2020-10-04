@@ -8,7 +8,7 @@
   font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
-.ant-row-rtl {
+.ant-layout-rtl {
   @font-family: 'Markazi Text', 'Ubuntu', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 * {
@@ -50,6 +50,7 @@ max-width: 1200px;
 margin: 0 auto;
 padding: 0 10px;
 min-height: calc(100vh - 104px);
+display: block;
 }
 .Now h1 {
   font-size: 3rem;
@@ -67,7 +68,8 @@ min-height: calc(100vh - 104px);
 }
 .Footer {
   font-size: 14px;
-  padding: 5px 20px;
+  padding: 20px;
+  padding-top: 5px;
 }
 /* Shared */
 .primary {
@@ -101,7 +103,10 @@ min-height: calc(100vh - 104px);
   background: @primary-color;
   border-radius: 15px;
   overflow: hidden;
-  // background: linear-gradient(270deg,  @primary-color, @secondary-color, @primary-color);
+  background: linear-gradient(90deg,  @primary-color, @secondary-color);
+}
+.ant-col-rtl .progress .fill {
+  background: linear-gradient(270deg,  @primary-color, @secondary-color);
 }
 .progress .loading {
   height: 100%;
@@ -125,6 +130,9 @@ min-height: calc(100vh - 104px);
   margin: auto;
   margin-bottom: 20px;
   min-height: 168px;
+}
+.alert {
+  margin-bottom: 1rem;
 }
 .centered {
   display: flex;
