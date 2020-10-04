@@ -117,7 +117,7 @@ Distributed under the MIT License.
 
 ## Contact
 
-Majd - [Email (mailto:majd.tarbin@outlook.com)]
+Majd - [Email](mailto:majd.tarbin@outlook.com)
 
 ## Acknowledgements
 * Icons by [fjstudio](https://www.flaticon.com/authors/fjstudio) and [Font Awesome](https://fontawesome.com/)
