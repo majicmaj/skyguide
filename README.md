@@ -1,68 +1,126 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <a href="https://skyguide.me/">
+    <img src="src/CDN/moon.png" alt="Logo" width="128" height="128">
+  </a>
 
-## Available Scripts
+  <h3 align="center">Sky Guide</h3>
 
-In the project directory, you can run:
+  <p align="center">
+    Skyguide is a local weather PWA that caters to stargazers and astronomers.
+    <br />
+    <br />
+    <br />
+    <a href="https://skyguide.me/">View Demo</a>
+    ·
+    <a href="https://github.com/majicmaj/skyguide/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/majicmaj/skyguide/issues">Request Feature</a>
+  </p>
+</p>
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Table of Contents
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## About this Project
 
-### `yarn build`
+![Sky Guide Screen Shot](https://i.imgur.com/hu9CA2Y.png)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+That is a ton of weather apps available, but I wanted to take a crack at it for something that really suits my needs. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Here's why:
+* This app combines the use of Multiple API in a seamless PWA
+* Built with internationalization in mind
+* Open source :)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Of course this app might not serve every possible function, but I will be adding more features in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Built With
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [React](https://reactjs.org/)
+* [Ant Design](https://ant.design/)
+* [i18next](https://www.i18next.com/)
+* [Less](http://lesscss.org/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Getting Started
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Insturctions to set up your project locally. Follow these instruction to get a local copy up and running
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Prerequisites
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* npm
+```sh
+npm install npm@latest -g
+```
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Installtion
 
-### Analyzing the Bundle Size
+1. Clone the repo
+```sh
+git clone https://github.com/majicmaj/skyguide.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
+3. Run the server
+```sh
+npm start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+## Usage
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+You can run this project locally, just make sure to change the `dev` enviroment to something else in `constants.js`
+```JS
+export const ENV = {
+  DEV: 'development' //change this to something else.
+  ...
+}
+```
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Roadmap
 
-### Deployment
+See the [open issues](https://github.com/majeemaj/skyguide/issues) for a list of proposed features (and known issues).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `yarn build` fails to minify
+## Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+## License
+
+Distributed under the MIT License.
+
+## Contact
+
+Majd - [Email (mailto:majd.tarbin@outlook.com)]
+
+## Acknowledgements
+* Icons by [fjstudio](https://www.flaticon.com/authors/fjstudio) and [Font Awesome](https://fontawesome.com/)
+* [Best README template](https://github.com/othneildrew/Best-README-Template)
+
+
