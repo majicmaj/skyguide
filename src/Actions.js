@@ -2,7 +2,7 @@ import {rainy, cloudy, moon, cloudyNight, sun, cloudyMorning, windSign, windy, s
 import i18n from './i18n';
 export const getFavorability = (cover, seeing, transparency) => {
     cover = ((cover/9)**0.1) * 9
-    const fav = Math.ceil((11*cover - transparency - seeing)/9)
+    const fav = Math.ceil((9*cover - transparency - seeing)/9)
     return fav
 }
 export const getIcon = (description, night) => {
