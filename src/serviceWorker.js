@@ -19,8 +19,19 @@ const isLocalhost = Boolean(
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
 );
+const navigateFallbackBlacklist = [
+  new RegExp("^/.netlify"),
+  new RegExp("^/_"),
+  new RegExp("/[^/?]+\\.[^/]+$")
+]
+const isNetlifyRoute = () => {
+  const path = window.location.pathname
+  navigateFallbackBlacklist.forEach(regex => {
+    if (path.match(regex)) return true
+  })
+  return false
+}
 
-const isNetlifyRoute = () => window.location.pathname.includes('/.netlify')
 export function register(config) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
