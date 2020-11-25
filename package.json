@@ -13,6 +13,7 @@
     "craco-less": "^1.17.0",
     "flatted": "^3.0.5",
     "i18next": "^19.8.0",
+    "lint": "^0.7.0",
     "netlify-identity-widget": "^1.9.1",
     "netlify-lambda": "^2.0.1",
     "node-fetch": "^2.6.1",

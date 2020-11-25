@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Dropdown, Button } from 'antd';
+import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import netlifyIdentity from 'netlify-identity-widget';
 
