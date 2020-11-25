@@ -20,6 +20,7 @@ const isLocalhost = Boolean(
     )
 );
 
+const isNetlifyRoute = () => window.location.pathname.includes('/.netlify')
 export function register(config) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
@@ -46,6 +47,13 @@ export function register(config) {
               'worker. To learn more, visit https://bit.ly/CRA-PWA'
           );
         });
+      }
+      if (isNetlifyRoute()) {
+        console.info('unregistering service worker for admin route')
+        unregister()
+        console.info('reloading')
+        window.location.reload()
+        return false
       } else {
         // Is not localhost. Just register service worker
         registerValidSW(swUrl, config);

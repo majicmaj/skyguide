@@ -25,8 +25,21 @@ const App = () => {
   const [user, setUser] = useStickyState(null, CURRENT_USER)
 
   // Identity
-  netlifyIdentity.on("login", (user) => setUser({user}));
-  netlifyIdentity.on("logout", () => setUser({user: null}));
+  netlifyIdentity.on("login", (user) => {
+    setUser(user);
+    netlifyIdentity.close();
+  });
+  netlifyIdentity.on("logout", () => setUser(null));
+
+  useEffect(() => {
+    if (netlifyIdentity.currentUser()) {
+      const currentUser = netlifyIdentity.currentUser();
+      setUser(currentUser)
+    }
+    else {
+      setUser(null)
+    }
+  }, [setUser])
 
   useEffect(() => {
     i18n.changeLanguage(lang)

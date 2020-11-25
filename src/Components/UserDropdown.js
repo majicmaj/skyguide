@@ -6,7 +6,7 @@ import netlifyIdentity from 'netlify-identity-widget';
 const UserDropdown = (props) => {
     const logoutMenu = <Menu>
         <Menu.Item>
-            { props.user?.user_metadata.full_name }
+            { props.user?.user_metadata?.full_name }
         </Menu.Item>
         <Menu.Item onClick={() => netlifyIdentity.logout()}>
             Logout
@@ -19,7 +19,7 @@ const UserDropdown = (props) => {
         </Menu.Item>
     </Menu>
 
-    const menu = () => props.user !== null ? logoutMenu : loginMenu
+    const menu = () => props.user ? logoutMenu : loginMenu
 
     return <Dropdown overlay={menu} >
         <div className="ant-dropdown-link" onClick={e => e.preventDefault()}>
