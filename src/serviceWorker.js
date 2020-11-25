@@ -20,9 +20,9 @@ const isLocalhost = Boolean(
     )
 );
 const navigateFallbackBlacklist = [
-  new RegExp("^/.netlify"),
-  new RegExp("^/_"),
-  new RegExp("/[^/?]+\\.[^/]+$")
+  "^/.netlify",
+  "^/_",
+  "/[^/?]+\\.[^/]+$"
 ]
 const isNetlifyRoute = () => {
   const path = window.location.pathname
