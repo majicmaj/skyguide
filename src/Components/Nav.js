@@ -2,8 +2,8 @@ import { Button } from 'antd';
 import Text from 'antd/lib/typography/Text';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import LanguageDropdown from './LanguageDropdown';
+import UserDropdown from './UserDropdown';
 
 const Nav = (props) => {
     const {t} = useTranslation();
@@ -15,8 +15,7 @@ const Nav = (props) => {
     
 
     return<nav className="Nav">
-        <Button type="text">
-        </Button>
+        <UserDropdown user={props.user} />
         <Text>{title?title:t('loading')}</Text>
         <LanguageDropdown setLang={props.setLang} setDirection={props.setDirection}/>
     </nav>

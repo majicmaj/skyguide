@@ -1,26 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ConfigProvider } from 'antd';
 import Axios from 'axios'
 import ar from 'antd/es/locale/ar_EG';
 import en from 'antd/es/locale/en_US';
+import netlifyIdentity from "netlify-identity-widget";
 import './App.less';
 
 import Nav from './Components/Nav'
 import Main from './Container/Main'
 import Footer from './Container/Footer'
 
-import { NAVIGATOR, ENV, LAMBDA } from './Constants';
+import { NAVIGATOR, ENV, LAMBDA, CURRENT_USER } from './Constants';
 import i18n from './i18n';
 import useStickyState from './Hooks/useStickyState';
 
 const App = () => {
   const [astroData, setAstroData] = useStickyState({}, 'astro')
-  const [geoData, setGeoData] = useStickyState({}, 'geo')
+  const [geoData, setGeoData] = useState({}, 'geo')
   const [weatherData, setWeatherData] = useStickyState({}, 'weather')
   const [hourlyWeatherData, setHourlyWeatherData] = useStickyState({}, 'hourly')
   const [grid, setGrid] = useStickyState({}, 'grid')
   const [direction, setDirection] = useStickyState('ltr', 'dir')
   const [lang, setLang] = useStickyState('en', 'lang')
+  const [user, setUser] = useStickyState(null, CURRENT_USER)
+
+  // Identity
+  netlifyIdentity.on("login", (user) => setUser({user}));
+  netlifyIdentity.on("logout", () => setUser({user: null}));
 
   useEffect(() => {
     i18n.changeLanguage(lang)
@@ -125,7 +131,7 @@ const App = () => {
   return(
     <div className="App" dir={direction}>
       <ConfigProvider direction={direction} locale={getLocale()}>
-        <Nav geo={geoData} setDirection={setDirection} setLang={setLang}/>
+        <Nav user={user} geo={geoData} setDirection={setDirection} setLang={setLang}/>
         <Main astro={astroData} weather={weatherData} hourly={hourlyWeatherData}/>
         <Footer/>
       </ConfigProvider>
