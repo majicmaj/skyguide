@@ -2,8 +2,9 @@ import NavBar from '@/views/components/NavBar'
 import { Outlet } from 'react-router-dom'
 
 function App() {
+  // useSkyGradientBackground()
   return (
-    <div className='min-h-screen'>
+    <div className='flex min-h-screen flex-col gap-4'>
       <NavBar />
       <Outlet />
     </div>

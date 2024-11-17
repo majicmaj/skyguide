@@ -1,60 +1,25 @@
-import Logo from '@/assets/logo.svg'
-import {
-  HomeOutlined,
-  MenuRounded,
-  SettingsOutlined,
-} from '@mui/icons-material'
-import { Drawer, IconButton, List, ModalClose } from '@mui/joy'
-import { useState } from 'react'
-import NavBarLink from './NavBarLink'
-
-const links = [
-  {
-    to: '/',
-    label: 'Home',
-    icon: <HomeOutlined />,
-  },
-  {
-    to: '/settings',
-    label: 'Settings',
-    icon: <SettingsOutlined />,
-  },
-]
+import useGetWeather from '../../api/useGetWeather'
+import { useGetPrimaryColor } from '../../hooks/useGetPrimaryColor'
 
 const NavBar = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const closeDrawer = () => setDrawerOpen(false)
+  // const [search, setsSearch] = useState('New York, NY')
+  const { data } = useGetWeather()
+  const { current } = data || {}
+  const { weather } = current || {}
+  const [first] = weather || []
+  const { main } = first || {}
 
+  const primaryColor = useGetPrimaryColor()
+  const primaryColorClass = `text-${primaryColor}-500 dark:text-${primaryColor}-400`
   return (
-    <nav className='flex gap-4 p-4'>
-      <IconButton
-        size='sm'
-        variant='outlined'
-        onClick={() => setDrawerOpen(true)}
-      >
-        <MenuRounded />
-      </IconButton>
-
-      <img src={Logo} width='28' />
-
-      <Drawer open={drawerOpen} onClose={closeDrawer} size='sm'>
-        <div>
-          <div className='flex items-center px-5 pt-4'>
-            <img src={Logo} width='28' />
-            <ModalClose size='sm' sx={{ top: 'unset', right: 20 }} />
-          </div>
-
-          <List
-            sx={{ p: 2, height: 'min-content' }}
-            size='md'
-            onClick={closeDrawer}
-          >
-            {links.map((link, index) => (
-              <NavBarLink key={index} link={link} />
-            ))}
-          </List>
-        </div>
-      </Drawer>
+    <nav className='p-4'>
+      <div className='grid grid-cols-[1fr,auto,1fr] gap-2 rounded-full bg-white p-2 text-lg font-bold dark:bg-slate-800'>
+        <span className='flex justify-end text-gray-500 dark:text-gray-400'>
+          New York, NY
+        </span>
+        <span className='text-gray-500 dark:text-gray-400'>·</span>
+        <span className={primaryColorClass}>{main}</span>
+      </div>
     </nav>
   )
 }

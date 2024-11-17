@@ -24,7 +24,7 @@ const ThemeToggle = () => {
 
       <ToggleButtonGroup
         id={ELEMENTID}
-        variant='outlined'
+        variant='solid'
         value={mode}
         onChange={(_, value) => setMode(value)}
       >

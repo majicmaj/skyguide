@@ -1,8 +1,8 @@
 import App from '@/App'
 import Error from '@/views/Error'
-import Home from '@/views/Home'
 import Settings from '@/views/Settings/Settings'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Home from '../views/Home/Home'
 
 const Router = createBrowserRouter([
   {
