@@ -1,3 +1,4 @@
+import { Skeleton } from '@mui/joy'
 import PropTypes from 'prop-types'
 import { useSearchParams } from 'react-router-dom'
 import useGetWeather from '../../../../../api/useGetWeather'
@@ -7,7 +8,7 @@ import { VIEWS } from '../constants'
 const MainText = ({ position = 0 }) => {
   const [searchParams] = useSearchParams()
   const selectedView = searchParams.get('view') || 'temperature'
-  const { data } = useGetWeather()
+  const { data, isLoading } = useGetWeather()
   const { current } = data || {}
 
   const formatText = text => {
@@ -110,6 +111,14 @@ const MainText = ({ position = 0 }) => {
 
   const formattedText = formatText(text)
   const unit = getTextUnit(text)
+
+  if (isLoading) {
+    return (
+      <div className='flex h-36 flex-col items-center justify-end'>
+        <Skeleton variant='text' width={100} />
+      </div>
+    )
+  }
 
   return (
     <div className='flex flex-col items-center'>

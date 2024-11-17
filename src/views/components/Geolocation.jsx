@@ -1,7 +1,8 @@
+import { Skeleton } from '@mui/joy'
 import useGetGeocoding from '../../api/useGetGeocoding'
 
 const Geolocation = () => {
-  const { data } = useGetGeocoding()
+  const { data, isLoading } = useGetGeocoding()
   const { results } = data || {}
   const [first] = results || []
   const { address_components } = first || {}
@@ -13,6 +14,14 @@ const Geolocation = () => {
   )?.short_name
 
   const location = city || stateCode ? `${city}, ${stateCode}` : null
+
+  if (isLoading) {
+    return (
+      <span className='flex justify-end'>
+        <Skeleton variant='text' width={100} />
+      </span>
+    )
+  }
   return (
     <span className='flex justify-end text-gray-500 dark:text-gray-400'>
       {location}
