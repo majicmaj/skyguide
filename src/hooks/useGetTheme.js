@@ -16,7 +16,6 @@ const getPalette = key => {
 const getPrimaryColor = () => {
   const hour = new Date().getHours()
   const index = Math.floor(hour / 2)
-  console.log('using index', index)
   const color = PRIMARY_COLORS[index]
 
   return color
