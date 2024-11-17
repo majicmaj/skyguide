@@ -56,5 +56,5 @@ export const useGetIcon = () => {
   const { weather } = current || {}
   const [first] = weather || []
   const { icon } = first || {}
-  return icons['10d']
+  return icons[icon]
 }
