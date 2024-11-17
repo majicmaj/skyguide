@@ -18,6 +18,7 @@ export const ViewSelector = () => {
   const normalColorClass = `bg-white dark:bg-slate-800`
   const restClass =
     'p-1 px-2 font-medium rounded flex gap-1 min-w-[max-content] transition-colors'
+
   return (
     <div className='flex gap-2 overflow-auto px-2'>
       {Object.keys(VIEWS).map(view => (
