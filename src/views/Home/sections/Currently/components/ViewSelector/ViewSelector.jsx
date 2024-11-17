@@ -14,7 +14,7 @@ export const ViewSelector = () => {
   }
 
   const primaryColor = useGetPrimaryColor()
-  const primaryColorClass = `bg-${primaryColor}-500 dark:bg-${primaryColor}-400 text-white`
+  const primaryColorClass = `bg-${primaryColor}-500 text-white`
   const normalColorClass = `bg-white dark:bg-slate-800`
   const restClass =
     'p-1 px-2 font-medium rounded flex gap-1 min-w-[max-content] transition-colors'

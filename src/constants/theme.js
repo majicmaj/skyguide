@@ -6,23 +6,19 @@ export const { theme: THEME } = resolveConfig(tailwindConfig)
 export const COLORS = THEME.colors
 
 export const PRIMARY_COLORS = [
-  'pink', // 12:00 AM
-  'purple', // 2:00 AM
-  'rose', // 4:00 AM
+  'pink', // 0
+  'purple',
   'rose',
-  'orange', // 8:00 AM
+  'rose', // 3
+  'orange',
   'amber',
-  'yellow', // 10:00 AM
-  'yellow',
-  'yellow',
-  'yellow', // 2:00 PM
+  'yellow', // 6
   'amber',
   'orange',
-  'red',
-  'red', // 6:00 PM
+  'red', // 9
   'purple',
-  'purple', // 8:00 PM
-  'pink', // 10:00 PM
+  'purple',
+  'pink', // 12
 ]
 
 export const PRIMARY_TEXT_COLORS = [
