@@ -21,6 +21,7 @@ const WindDirection = () => {
             transform: `rotate(${wind_deg}deg)`,
             fontSize: '3rem',
             transition: 'transform 0.5s',
+            color: 'inherit',
             // opacity: isSelectedViewWind ? 1 : 0.5,
           }}
         />

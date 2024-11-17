@@ -110,6 +110,7 @@ const MainText = ({ position = 0 }) => {
 
   const formattedText = formatText(text)
   const unit = getTextUnit(text)
+
   return (
     <div className='flex flex-col items-center'>
       <div>
@@ -120,7 +121,7 @@ const MainText = ({ position = 0 }) => {
         </span>
         <span className={`${getUnitSize(text)}`}>{unit}</span>
       </div>
-      <span className='font-normal opacity-80'>
+      <span className={`text-lg font-medium drop-shadow-md`}>
         {capitalize(text?.replace(/_/g, ' '))}
       </span>
     </div>

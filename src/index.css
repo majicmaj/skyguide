@@ -5,5 +5,5 @@
 /* apply light blue tailwind class to the root */
 
 body {
-  @apply bg-sky-100  dark:bg-slate-900;
+  @apply bg-sky-200/80  dark:bg-slate-950;
 }
