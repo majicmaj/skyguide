@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import useGetLocation from './useGetLocation'
 
+const unitKey = 'temperature-unit'
 export const useGetWeather = () => {
   const { data } = useGetLocation()
   const { lat, lon } = data || {}
@@ -13,9 +14,12 @@ export const useGetWeather = () => {
         return null
       }
 
+      const units = JSON.parse(window.localStorage.getItem(unitKey)) || 'metric'
+
       const response = await fetch(
-        import.meta.env.VITE_API_URL + `?lat=${lat}&lon=${lon}`,
+        import.meta.env.VITE_API_URL + `?lat=${lat}&lon=${lon}&units=${units}`,
       )
+
       return response.json()
     },
   })

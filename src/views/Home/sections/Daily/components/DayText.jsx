@@ -15,6 +15,26 @@ const getHexColorBasedOnCelsius = celsius => {
   return `hsl(${hue}, 100%, 42%)`
 }
 
+const getHexColorBasedOnFahrenheit = fahrenheit => {
+  // Clamp temperatures to be within the range of 32°F to 111.2°F
+  const clampedFahrenheit = Math.max(14, Math.min(132, fahrenheit))
+
+  // Calculate the hue based on temperature
+  const hue = 220 - ((clampedFahrenheit - 32) / 79.2) * 220 // 32°F is blue (220°), 111.2°F is red (0°)
+
+  return `hsl(${hue}, 100%, 42%)`
+}
+
+const getHexColor = value => {
+  const units = JSON.parse(window.localStorage.getItem('temperature-unit'))
+
+  if (units === 'metric') {
+    return getHexColorBasedOnCelsius(value)
+  }
+
+  return getHexColorBasedOnFahrenheit(value)
+}
+
 const getFields = (day, view) => {
   if (view === 'temperature') {
     return {
@@ -152,7 +172,7 @@ const DayText = ({ day }) => {
               <div
                 className='text-xl font-bold'
                 style={{
-                  color: getHexColorBasedOnCelsius(left),
+                  color: getHexColor(left),
                 }}
               >
                 {capitalize(left) || '_'}

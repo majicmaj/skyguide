@@ -1,4 +1,5 @@
 import { Container, Divider, Typography } from '@mui/joy'
+import TemperatureUnitToggle from './TemperatureUnitToggle'
 import ThemeToggle from './ThemeToggle'
 
 const Settings = () => {
@@ -12,6 +13,7 @@ const Settings = () => {
           your system and automatically switch between day and night themes.
         </Typography>
         <ThemeToggle />
+        <TemperatureUnitToggle />
       </div>
     </Container>
   )

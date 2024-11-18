@@ -8,17 +8,12 @@ import Location from './Location'
 
 const Search = () => {
   const [query, setQuery] = useState('')
-  const [selectedIndex, setSelectedIndex] = useState(null)
 
   const { data } = useGetAutocomplete(query)
   const { predictions } = data || {}
   const options = predictions?.map(({ description }) => description).slice(0, 3)
 
-  const {
-    data: savedLocations = [],
-    isLoading,
-    isRefetching,
-  } = useGetSavedLocations()
+  const { data: savedLocations = [] } = useGetSavedLocations()
 
   const navigate = useNavigate()
   const handleBack = () => {
