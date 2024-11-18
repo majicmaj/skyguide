@@ -27,7 +27,7 @@ const Currently = () => {
       <div className='absolute right-8 top-1/3 -translate-y-1/2 drop-shadow-lg'>
         <CurrentWeatherIcon />
       </div>
-      <div className='absolute bottom-0 w-full'>
+      <div className='absolute bottom-0 w-full pb-1'>
         <ViewSelector />
       </div>
     </div>
