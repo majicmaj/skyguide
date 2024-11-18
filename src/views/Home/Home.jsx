@@ -1,15 +1,19 @@
+import useGetWeather from '@/api/useGetWeather'
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/joy'
-import useGetWeather from '../../api/useGetWeather'
 import ThemeToggle from '../Settings/ThemeToggle'
 import Currently from './sections/Currently/Currently'
+import Daily from './sections/Daily/Daily'
+import DateDisplay from './sections/Date/DateDisplay'
 import Hourly from './sections/Hourly/Hourly'
 
 const Home = () => {
   const { data } = useGetWeather()
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-1'>
       <Currently />
+      <DateDisplay />
       <Hourly />
+      <Daily />
       <Accordion sx={{ mt: 1 }}>
         <AccordionSummary>Debugger</AccordionSummary>
         <AccordionDetails>

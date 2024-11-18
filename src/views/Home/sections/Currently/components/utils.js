@@ -33,6 +33,8 @@ export const getTextUnit = key => {
   if (windKeys.includes(key)) return 'm/s'
   if (pressureKeys.includes(key)) return 'hPa'
   if (percentageKeys.includes(key)) return '%'
+  if (distanceKeys.includes(key)) return 'km'
+  return ''
 }
 
 const size8xlKeys = [

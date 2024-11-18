@@ -25,12 +25,11 @@
 import WeatherIcon from '@/components/WeatherIcon'
 import { ICONS } from '@/constants/icons'
 import { capitalize } from '@/utils/capitalize'
-import { PropTypes } from 'prop-types'
 import { useSearchParams } from 'react-router-dom'
-import { getFormattedText, getTextUnit } from '../../Currently/components/utils'
+import { getTextUnit } from '../../Currently/components/utils'
 import { VIEWS } from '../../Currently/constants'
 
-const Hour = ({ hour, index }) => {
+const Day = ({ hour, index }) => {
   const [searchParams] = useSearchParams()
   const selectedView = searchParams.get('view') || 'temperature'
 
@@ -40,20 +39,26 @@ const Hour = ({ hour, index }) => {
 
   const isViewSun = selectedView === 'sun'
   const [left, right] = VIEWS[selectedView]
-  const formattedLeft = isViewSun ? '' : getFormattedText(left, hour)
-  const formattedRight = isViewSun ? '' : getFormattedText(right, hour)
+  const formattedLeft = JSON.stringify(left)
+  const formattedRight = JSON.stringify(right)
 
   const time = new Date(dt * 1000)
-  const hr = time.toLocaleTimeString('en-US', { hour: 'numeric' })
+  // short weekday
+  const day = time.toLocaleDateString('en-US', {
+    weekday: 'short',
+  })
+  // .slice(0, 3)
 
   const leftUnit = getTextUnit(left)
   const rightUnit = getTextUnit(right)
 
   // console.log('hour', { hour, value, selectedView })
   return (
-    <div className='flex flex-col items-center gap-2'>
-      <div className='flex h-32 w-20 flex-col items-center justify-between rounded-xl bg-white p-2 pb-4 dark:bg-slate-900'>
-        <div className='flex h-full flex-col items-center justify-center pb-2'>
+    <div className='flex items-center gap-2'>
+      <p className='w-12'>{day}</p>
+      <div className='flex h-20 w-full items-center justify-between rounded-xl bg-white p-4 dark:bg-slate-900'>
+        <WeatherIcon icon={ICONS[icon]} className='h-8 w-8' />
+        <div className='flex items-center justify-center gap-4'>
           <div className='text-xl font-bold'>
             {capitalize(formattedLeft) || '_'}
             {leftUnit}
@@ -63,16 +68,9 @@ const Hour = ({ hour, index }) => {
             {rightUnit}
           </div>
         </div>
-        <WeatherIcon icon={ICONS[icon]} className='h-8 w-8' />
       </div>
-      <p>{hr}</p>
     </div>
   )
 }
 
-export default Hour
-
-Hour.propTypes = {
-  hour: PropTypes.object,
-  index: PropTypes.number,
-}
+export default Day
