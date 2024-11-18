@@ -49,7 +49,7 @@ const Search = () => {
           handleSelect={() => navigate('/')}
           isSaveable={false}
         />
-        {!!options.length && (
+        {!!options?.length && (
           <div className='flex flex-col gap-1'>
             <p>Results</p>
             <Divider />
@@ -64,7 +64,7 @@ const Search = () => {
           />
         ))}
 
-        {!!savedLocations.length && (
+        {!!savedLocations?.length && (
           <div className='flex flex-col gap-1'>
             <p>Saved Locations</p>
             <Divider />
