@@ -11,12 +11,23 @@ import useGetGeocode from '../../api/useGetGeocode'
 import useGetSavedLocations from '../../api/useGetSavedLocations'
 import useSaveLocation from '../../api/useSaveLocation'
 
-const Location = ({ name, selected, isSaveable = true }) => {
+const Location = ({ name, isSaveable = true, isCurrentLocation = false }) => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const navigate = useNavigate()
 
   const setLocation = location => {
+    if (isCurrentLocation) {
+      setSearchParams({ lat: '', lon: '' })
+      navigate(
+        {
+          pathname: '/',
+          search: '',
+        },
+        { replace: false },
+      )
+    }
+
     const { lat, lng: lon } = location || {}
 
     if (!lat || !lon) return null
@@ -34,7 +45,7 @@ const Location = ({ name, selected, isSaveable = true }) => {
     )
   }
 
-  const { data, isSuccess } = useGetGeocode(name, selected)
+  const { data } = useGetGeocode(name)
   const { results } = data || {}
   const [first] = results || []
   const { geometry } = first || {}
@@ -43,8 +54,6 @@ const Location = ({ name, selected, isSaveable = true }) => {
   const { data: savedLocations } = useGetSavedLocations()
   const { mutate: save } = useSaveLocation()
   const { mutate: remove } = useDeleteLocation()
-
-  const selectedBorder = selected ? 'border-2 border-blue-500' : ''
 
   const saveLocationToLocalStorage = e => {
     e.stopPropagation()
@@ -73,11 +82,10 @@ const Location = ({ name, selected, isSaveable = true }) => {
   return (
     <Box
       onClick={() => setLocation(selectedLocation)}
-      className={`flex items-center gap-2 rounded bg-white p-4 dark:bg-slate-800 ${selectedBorder}`}
+      className={`flex items-center gap-2 rounded bg-white p-4 dark:bg-slate-800`}
     >
       <LocationOnRounded />
       <span>{name}</span>
-      {selected && <span>(selected)</span>}
       {isSaveable && (
         <div className='flex grow justify-end'>
           {isInLocalStorage ? (
@@ -101,4 +109,5 @@ Location.propTypes = {
   name: PropTypes.string.isRequired,
   selected: PropTypes.bool,
   isSaveable: PropTypes.bool,
+  isCurrentLocation: PropTypes.bool,
 }

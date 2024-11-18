@@ -8,7 +8,7 @@ export const useGetAutocomplete = query => {
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedQuery(query)
-    }, 500) // Adjust debounce delay (in milliseconds) as needed
+    }, 500) // 500ms delay
 
     return () => clearTimeout(handler)
   }, [query])

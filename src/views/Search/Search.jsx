@@ -12,7 +12,7 @@ const Search = () => {
 
   const { data } = useGetAutocomplete(query)
   const { predictions } = data || {}
-  const options = predictions?.map(({ description }) => description)
+  const options = predictions?.map(({ description }) => description).slice(0, 3)
 
   const {
     data: savedLocations = [],
@@ -45,9 +45,8 @@ const Search = () => {
       <div className='flex flex-col gap-2 p-2'>
         <Location
           name='Your Current Location'
-          selected={false}
-          handleSelect={() => navigate('/')}
           isSaveable={false}
+          isCurrentLocation
         />
         {!!options?.length && (
           <div className='flex flex-col gap-1'>
@@ -55,13 +54,8 @@ const Search = () => {
             <Divider />
           </div>
         )}
-        {options?.map((location, index) => (
-          <Location
-            key={location}
-            name={location}
-            selected={index === selectedIndex}
-            handleSelect={() => setSelectedIndex(index)}
-          />
+        {options?.map(location => (
+          <Location key={location} name={location} />
         ))}
 
         {!!savedLocations?.length && (
@@ -70,13 +64,8 @@ const Search = () => {
             <Divider />
           </div>
         )}
-        {savedLocations.map(({ name, selected }) => (
-          <Location
-            key={name}
-            name={name}
-            selected={selected}
-            handleSelect={() => navigate('/')}
-          />
+        {savedLocations.map(({ name }) => (
+          <Location key={name} name={name} />
         ))}
       </div>
     </div>
