@@ -4,6 +4,15 @@ import { capitalize } from '@/utils/capitalize'
 import PropTypes from 'prop-types'
 import { useSearchParams } from 'react-router-dom'
 import { getTextUnit } from '../../Currently/components/utils'
+const getHexColorBasedOnCelsius = celsius => {
+  // Clamp temperatures to be within the range of 0°C to 44°C
+  const clampedCelsius = Math.max(-10, Math.min(54, celsius))
+
+  // Calculate the hue based on temperature
+  const hue = 220 - (clampedCelsius / 44) * 220 // 0°C is blue (220°), 44°C is red (0°)
+
+  return `hsl(${hue}, 100%, 50%)`
+}
 
 const getFields = (day, view) => {
   if (view === 'temperature') {
@@ -15,12 +24,18 @@ const getFields = (day, view) => {
 
   if (view === 'sun') {
     return {
-      left: new Date(day.sunrise * 1000).toLocaleTimeString('en-US', {
-        hour: 'numeric',
-      }),
-      right: new Date(day.sunset * 1000).toLocaleTimeString('en-US', {
-        hour: 'numeric',
-      }),
+      left: new Date(day.sunrise * 1000)
+        .toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+        })
+        .slice(0, -2),
+      right: new Date(day.sunset * 1000)
+        .toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+        })
+        .slice(0, -2),
     }
   }
 
@@ -115,6 +130,8 @@ const DayText = ({ day }) => {
 
   const color = weatherMainKeyColors[main]
 
+  const isTemp = selectedView === 'temperature'
+
   return (
     <div className='flex w-full items-center gap-2'>
       <div className='flex h-20 w-full items-center justify-between rounded-xl bg-white p-4 dark:bg-slate-900'>
@@ -123,10 +140,25 @@ const DayText = ({ day }) => {
           <p className={`${color} font-bold`}>{capitalize(main)}</p>
         </div>
         <div className='flex items-center justify-center gap-4'>
-          <div className='text-xl font-bold'>
-            {capitalize(left) || '_'}
-            {unit}
-          </div>
+          {!isTemp && (
+            <div className='text-xl font-bold'>
+              {capitalize(left) || '_'}
+              {unit}
+            </div>
+          )}
+          {isTemp && (
+            <div className='flex items-center gap-1'>
+              <div
+                className='text-xl font-bold'
+                style={{
+                  color: getHexColorBasedOnCelsius(left),
+                }}
+              >
+                {capitalize(left) || '_'}
+                {unit}
+              </div>
+            </div>
+          )}
           {right && (
             <div>
               {capitalize(right)}

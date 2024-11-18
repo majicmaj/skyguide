@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
-export const useGetGeocode = query => {
+export const useGetGeocode = (query, selected) => {
   return useQuery({
-    queryKey: ['geocode', query],
+    queryKey: ['geocode', query, selected],
     queryFn: async () => {
       // if (import.meta.env.MODE === 'development') return { ...mockData }
 
@@ -11,7 +11,7 @@ export const useGetGeocode = query => {
       )
       return response.json()
     },
-    enabled: !!query,
+    enabled: selected && !!query,
   })
 }
 
