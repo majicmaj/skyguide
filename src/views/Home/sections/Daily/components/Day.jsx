@@ -52,9 +52,9 @@ const Day = ({ hour, index }) => {
 
   // console.log('hour', { hour, value, selectedView })
   return (
-    <div className='flex items-center gap-2'>
+    <div className='flex items-center gap-1'>
       <p className='w-12'>{day}</p>
-      <div className='flex h-20 w-full items-center justify-between rounded-xl bg-white p-4 dark:bg-slate-900'>
+      <div className='flex h-14 w-full items-center justify-between rounded-xl bg-white p-4 dark:bg-slate-900'>
         {/* <WeatherIcon icon={ICONS[icon]} className='h-8 w-8' />
         <div className='flex items-center justify-center gap-4'>
           <div className='text-xl font-bold'>

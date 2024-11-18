@@ -10,7 +10,8 @@ export const ViewSelector = () => {
   const selectedView = searchParams.get('view') || 'temperature'
 
   const setSelectedView = view => {
-    setSearchParams({ view })
+    searchParams.set('view', view)
+    setSearchParams(searchParams)
   }
 
   const primaryColor = useGetPrimaryColor()

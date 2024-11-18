@@ -4,6 +4,7 @@ import { capitalize } from '@/utils/capitalize'
 import PropTypes from 'prop-types'
 import { useSearchParams } from 'react-router-dom'
 import { getTextUnit } from '../../Currently/components/utils'
+
 const getHexColorBasedOnCelsius = celsius => {
   // Clamp temperatures to be within the range of 0°C to 44°C
   const clampedCelsius = Math.max(-10, Math.min(54, celsius))
@@ -11,7 +12,7 @@ const getHexColorBasedOnCelsius = celsius => {
   // Calculate the hue based on temperature
   const hue = 220 - (clampedCelsius / 44) * 220 // 0°C is blue (220°), 44°C is red (0°)
 
-  return `hsl(${hue}, 100%, 50%)`
+  return `hsl(${hue}, 100%, 42%)`
 }
 
 const getFields = (day, view) => {
@@ -134,7 +135,7 @@ const DayText = ({ day }) => {
 
   return (
     <div className='flex w-full items-center gap-2'>
-      <div className='flex h-20 w-full items-center justify-between rounded-xl bg-white p-4 dark:bg-slate-900'>
+      <div className='flex w-full items-center justify-between'>
         <div className='flex items-center justify-center gap-4'>
           <WeatherIcon icon={ICONS[icon]} className='h-8 w-8' />
           <p className={`${color} font-bold`}>{capitalize(main)}</p>

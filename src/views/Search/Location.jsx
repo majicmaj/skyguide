@@ -4,14 +4,14 @@ import {
   SaveRounded,
 } from '@mui/icons-material'
 import { Box, IconButton } from '@mui/joy'
-import { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import useDeleteLocation from '../../api/useDeleteLocation'
 import useGetGeocode from '../../api/useGetGeocode'
 import useGetSavedLocations from '../../api/useGetSavedLocations'
 import useSaveLocation from '../../api/useSaveLocation'
 
-const Location = ({ name, selected, handleSelect, isSaveable = true }) => {
+const Location = ({ name, selected, isSaveable = true }) => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const navigate = useNavigate()
@@ -70,16 +70,9 @@ const Location = ({ name, selected, handleSelect, isSaveable = true }) => {
     location => location.name === name,
   )
 
-  useEffect(() => {
-    if (isSuccess && selected) {
-      setLocation(selectedLocation)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSuccess & selected])
-
   return (
     <Box
-      onClick={handleSelect}
+      onClick={() => setLocation(selectedLocation)}
       className={`flex items-center gap-2 rounded bg-white p-4 dark:bg-slate-800 ${selectedBorder}`}
     >
       <LocationOnRounded />
@@ -103,3 +96,9 @@ const Location = ({ name, selected, handleSelect, isSaveable = true }) => {
 }
 
 export default Location
+
+Location.propTypes = {
+  name: PropTypes.string.isRequired,
+  selected: PropTypes.bool,
+  isSaveable: PropTypes.bool,
+}
