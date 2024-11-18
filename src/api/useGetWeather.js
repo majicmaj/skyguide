@@ -24,8 +24,8 @@ export const useGetWeather = () => {
 export default useGetWeather
 
 const mockData = {
-  lat: 38.9196,
-  lon: -77.3785,
+  lat: 32.9217,
+  lon: -96.8714,
   timezone: 'America/New_York',
   timezone_offset: -18000,
   current: {

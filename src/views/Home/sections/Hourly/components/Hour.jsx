@@ -52,16 +52,16 @@ const Hour = ({ hour, index }) => {
   // console.log('hour', { hour, value, selectedView })
   return (
     <div className='flex flex-col items-center gap-2'>
-      <div className='flex h-32 w-20 flex-col items-center justify-between rounded-xl bg-white p-2 pb-4 dark:bg-slate-900'>
-        <div className='flex h-full flex-col items-center justify-center pb-2'>
-          <div className='text-xl font-bold'>
+      <div className='flex h-28 w-20 flex-col items-center justify-between rounded-xl bg-white py-2 pb-3 dark:bg-slate-900'>
+        <div className='flex flex-col items-center justify-center'>
+          <p className='text-xl font-bold'>
             {capitalize(formattedLeft) || '_'}
             {leftUnit}
-          </div>
-          <div className=''>
+          </p>
+          <p>
             {capitalize(formattedRight)}
             {rightUnit}
-          </div>
+          </p>
         </div>
         <WeatherIcon icon={ICONS[icon]} className='h-8 w-8' />
       </div>

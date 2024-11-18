@@ -17,15 +17,12 @@ const Home = () => {
       <Accordion sx={{ mt: 1 }}>
         <AccordionSummary>Debugger</AccordionSummary>
         <AccordionDetails>
+          <ThemeToggle />
           <pre className='m-1 max-h-[400px] overflow-auto rounded border border-slate-500/50 p-1'>
             {JSON.stringify(data, null, 2)}
           </pre>
         </AccordionDetails>
       </Accordion>
-
-      <div className='absolute bottom-4 pl-4'>
-        <ThemeToggle />
-      </div>
     </div>
   )
 }

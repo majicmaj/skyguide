@@ -1,8 +1,8 @@
+import useGetReverseGeocode from '@/api/useGetReverseGeocode'
 import { Skeleton } from '@mui/joy'
-import useGetGeocoding from '../../api/useGetGeocoding'
 
 const Geolocation = () => {
-  const { data, isLoading } = useGetGeocoding()
+  const { data, isLoading } = useGetReverseGeocode()
   const { results } = data || {}
   const [first] = results || []
   const { address_components } = first || {}
