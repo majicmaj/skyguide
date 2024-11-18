@@ -22,12 +22,10 @@
 //   "pop": 0
 // }
 
-import WeatherIcon from '@/components/WeatherIcon'
-import { ICONS } from '@/constants/icons'
-import { capitalize } from '@/utils/capitalize'
 import { useSearchParams } from 'react-router-dom'
 import { getTextUnit } from '../../Currently/components/utils'
 import { VIEWS } from '../../Currently/constants'
+import DayText from './DayText'
 
 const Day = ({ hour, index }) => {
   const [searchParams] = useSearchParams()
@@ -57,7 +55,7 @@ const Day = ({ hour, index }) => {
     <div className='flex items-center gap-2'>
       <p className='w-12'>{day}</p>
       <div className='flex h-20 w-full items-center justify-between rounded-xl bg-white p-4 dark:bg-slate-900'>
-        <WeatherIcon icon={ICONS[icon]} className='h-8 w-8' />
+        {/* <WeatherIcon icon={ICONS[icon]} className='h-8 w-8' />
         <div className='flex items-center justify-center gap-4'>
           <div className='text-xl font-bold'>
             {capitalize(formattedLeft) || '_'}
@@ -67,7 +65,8 @@ const Day = ({ hour, index }) => {
             {capitalize(formattedRight)}
             {rightUnit}
           </div>
-        </div>
+        </div> */}
+        <DayText day={hour} />
       </div>
     </div>
   )

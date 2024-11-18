@@ -5,6 +5,7 @@ import {
   OpacityRounded,
   ThermostatRounded,
   VisibilityRounded,
+  WaterDropRounded,
   WbCloudyRounded,
   WbSunnyRounded,
   WbTwilightRounded,
@@ -14,14 +15,15 @@ import PropTypes from 'prop-types'
 // Define the icons mapping
 const VIEWS_ICONS = {
   temperature: ThermostatRounded,
+  rain: WaterDropRounded,
   sun: WbSunnyRounded,
+  'uv index': WbTwilightRounded,
   wind: AirRounded,
   clouds: WbCloudyRounded,
-  'uv index': WbTwilightRounded,
   humidity: OpacityRounded,
+  'dew point': InvertColorsRounded,
   visibility: VisibilityRounded,
   pressure: CompressRounded,
-  'dew point': InvertColorsRounded,
 }
 
 const ViewIcon = ({ view }) => {

@@ -14,7 +14,7 @@ export const useGetReverseGeocode = () => {
       }
 
       const response = await fetch(
-        import.meta.env.VITE_API_URL + `/geocode?lat=${lat}&lon=${lon}`,
+        import.meta.env.VITE_API_URL + `/reverse-geocode?lat=${lat}&lon=${lon}`,
       )
       return response.json()
     },

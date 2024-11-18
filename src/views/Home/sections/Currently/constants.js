@@ -8,4 +8,5 @@ export const VIEWS = {
   visibility: ['visibility'],
   pressure: ['pressure'],
   'dew point': ['dew_point'],
+  rain: ['pop'],
 }

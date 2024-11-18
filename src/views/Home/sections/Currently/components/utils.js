@@ -26,7 +26,7 @@ export const getFormattedText = (key, current) => {
 const temperatureKeys = ['temp', 'feels_like', 'dew_point']
 const windKeys = ['wind_speed', 'wind_gust']
 const pressureKeys = ['pressure']
-const percentageKeys = ['clouds', 'humidity']
+const percentageKeys = ['clouds', 'humidity', 'pop']
 
 export const getTextUnit = key => {
   if (temperatureKeys.includes(key)) return 'º'
